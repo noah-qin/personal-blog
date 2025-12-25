@@ -59,8 +59,8 @@ export const CommandMenu = () => {
                     </Command.Group>
 
                     <Command.Group heading="Social" className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider mb-2 px-2 mt-4">
-                        <Item onSelect={() => window.open('https://github.com/yourusername', '_blank')}>GitHub</Item>
-                        <Item onSelect={() => window.open('https://twitter.com/yourusername', '_blank')}>Twitter / X</Item>
+                        <Item onSelect={() => window.open('https://github.com/imnotnoahhh', '_blank')}>GitHub</Item>
+                        <Item onSelect={() => window.open('https://twitter.com/imnotnoahhh', '_blank')}>Twitter / X</Item>
                     </Command.Group>
                 </Command.List>
             </Command.Dialog>
