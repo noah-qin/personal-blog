@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+
+const postsByYear = posts.reduce(
+    (acc, post) => {
+        const year = post.data.publishDate.getFullYear();
+        if (!acc[year]) {
+            acc[year] = [];
+        }
+        acc[year].push(post);
+        return acc;
+    },
+    {} as Record<number, typeof posts>,
+);
+
+const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
+---
+
+<Layout title="Archive | Writing History">
+    <div class="max-w-2xl mx-auto space-y-12">
+        <header>
+            <div
+                class="flex items-center gap-2 text-zinc-500 mb-2 font-medium text-sm"
+            >
+                <a
+                    href="/"
+                    class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                    >Home</a
+                >
+                <span>/</span>
+                <span>Archive</span>
+            </div>
+            <h1 class="text-4xl font-bold text-zinc-900 dark:text-white">
+                Archive
+            </h1>
+            <p class="text-zinc-600 dark:text-zinc-400 mt-2">
+                {posts.length} posts in total.
+            </p>
+        </header>
+
+        <div class="space-y-12">
+            {
+                years.map((year) => (
+                    <section class="space-y-6">
+                        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-4">
+                            {year}
+                            <span class="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
+                        </h2>
+                        <ul class="space-y-4">
+                            {postsByYear[Number(year)].map((post) => (
+                                <li>
+                                    <a
+                                        href={`/blog/${post.slug}`}
+                                        class="group flex items-baseline justify-between gap-4"
+                                    >
+                                        <h3 class="text-zinc-700 dark:text-zinc-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors font-medium">
+                                            {post.data.title}
+                                        </h3>
+                                        <time
+                                            datetime={post.data.publishDate.toISOString()}
+                                            class="text-zinc-500 font-mono text-sm whitespace-nowrap"
+                                        >
+                                            {post.data.publishDate.toLocaleDateString(
+                                                "en-US",
+                                                {
+                                                    month: "short",
+                                                    day: "numeric",
+                                                },
+                                            )}
+                                        </time>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                ))
+            }
+        </div>
+    </div>
+</Layout>

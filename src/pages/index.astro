@@ -2,27 +2,47 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
+import PostRow from "../components/PostRow.astro";
+
+const featuredProjects = (await getCollection("projects"))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 2);
+
+const latestPosts = (await getCollection("blog"))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 3);
 ---
 
-<Layout title="Home | Builder & Researcher">
-	<section class="space-y-6 mb-16">
-		<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
-			Hi, I'm <span class="text-indigo-400">Noah Qin</span>.
+<Layout title="Home | Noah Qin">
+	<section class="py-12 md:py-20">
+		<h1
+			class="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-6"
+		>
+			Hi, I'm <span class="text-indigo-600 dark:text-indigo-400"
+				>Noah Qin</span
+			>.
 		</h1>
-		<p class="text-xl text-zinc-400 max-w-2xl leading-relaxed">
-			I build apps that impact thousands and research AI to shape the
-			future. International high school student aiming for the stars.
+		<p
+			class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed"
+		>
+			I'm a high schooler from China building <span
+				class="text-zinc-900 dark:text-zinc-200 font-medium"
+				>iOS apps</span
+			> and researching <span
+				class="text-zinc-900 dark:text-zinc-200 font-medium"
+				>AI agents</span
+			>. I write about engineering, design, and my journey in comp sci.
 		</p>
-		<div class="flex gap-4 pt-4">
+		<div class="flex gap-4 pt-6">
 			<a
 				href="/projects"
-				class="px-5 py-2.5 rounded-lg bg-white text-zinc-950 font-semibold hover:bg-zinc-200 transition-colors"
+				class="px-4 py-2 bg-zinc-900 text-white rounded-lg font-medium hover:bg-zinc-800 transition-colors"
 			>
 				View Projects
 			</a>
 			<a
 				href="/blog"
-				class="px-5 py-2.5 rounded-lg bg-zinc-800 text-white font-medium hover:bg-zinc-700 transition-colors border border-zinc-700"
+				class="px-4 py-2 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors"
 			>
 				Read Essays
 			</a>
@@ -30,70 +50,40 @@ import ProjectCard from "../components/ProjectCard.astro";
 	</section>
 
 	<!-- Featured Projects -->
-	<section class="space-y-8">
+	<section class="space-y-8 mb-20">
 		<div class="flex items-center justify-between">
-			<h2 class="text-2xl font-bold text-white">Selected Work</h2>
+			<h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+				Featured Projects
+			</h2>
 			<a
 				href="/projects"
-				class="text-sm text-zinc-500 hover:text-white transition-colors"
-				>View all &rarr;</a
+				class="text-sm font-medium text-zinc-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+				>View All &rarr;</a
 			>
 		</div>
-
-		<div class="grid gap-4 md:grid-cols-2">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			{
-				(await getCollection("projects"))
-					.sort(
-						(a, b) =>
-							b.data.publishDate.valueOf() -
-							a.data.publishDate.valueOf(),
-					)
-					.slice(0, 2)
-					.map((project) => <ProjectCard project={project} />)
+				featuredProjects.map((project) => (
+					<ProjectCard project={project} />
+				))
 			}
 		</div>
 	</section>
 
-	<!-- Latest Writing -->
-	<section class="space-y-8 pt-8 border-t border-zinc-800">
+	<!-- Latest Essays -->
+	<section class="space-y-8">
 		<div class="flex items-center justify-between">
-			<h2 class="text-2xl font-bold text-white">Writing</h2>
+			<h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+				Latest Essays
+			</h2>
 			<a
 				href="/blog"
-				class="text-sm text-zinc-500 hover:text-white transition-colors"
-				>View all &rarr;</a
+				class="text-sm font-medium text-zinc-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+				>Read Blog &rarr;</a
 			>
 		</div>
-
-		<div class="space-y-6">
-			{
-				(await getCollection("blog"))
-					.sort(
-						(a, b) =>
-							b.data.publishDate.valueOf() -
-							a.data.publishDate.valueOf(),
-					)
-					.slice(0, 2)
-					.map((post) => (
-						<a href={`/blog/${post.slug}`} class="block group">
-							<div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-								<h3 class="text-lg font-medium text-zinc-300 group-hover:text-indigo-400 transition-colors">
-									{post.data.title}
-								</h3>
-								<time class="text-xs text-zinc-500 font-mono flex-shrink-0">
-									{post.data.publishDate.toLocaleDateString(
-										"en-US",
-										{
-											month: "short",
-											day: "numeric",
-											year: "numeric",
-										},
-									)}
-								</time>
-							</div>
-						</a>
-					))
-			}
+		<div class="flex flex-col gap-2">
+			{latestPosts.map((post) => <PostRow post={post} />)}
 		</div>
 	</section>
 </Layout>

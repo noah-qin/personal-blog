@@ -43,13 +43,21 @@ const { Tag, projects, posts } = Astro.props;
 <Layout title={`#${Tag} | Topic`}>
     <div class="space-y-12">
         <header>
-            <div class="flex items-center gap-2 text-zinc-500 mb-2">
-                <a href="/" class="hover:text-white transition-colors">Home</a>
+            <div
+                class="flex items-center gap-2 text-zinc-500 mb-2 font-medium text-sm"
+            >
+                <a
+                    href="/"
+                    class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                    >Home</a
+                >
                 <span>/</span>
                 <span>Tags</span>
             </div>
-            <h1 class="text-4xl font-bold text-white">#{Tag}</h1>
-            <p class="text-zinc-400 mt-2">
+            <h1 class="text-4xl font-bold text-zinc-900 dark:text-white">
+                #{Tag}
+            </h1>
+            <p class="text-zinc-600 dark:text-zinc-400 mt-2">
                 {projects.length} Projects, {posts.length} Essays
             </p>
         </header>
@@ -57,7 +65,9 @@ const { Tag, projects, posts } = Astro.props;
         {
             projects.length > 0 && (
                 <section class="space-y-6">
-                    <h2 class="text-2xl font-bold text-white">Projects</h2>
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                        Projects
+                    </h2>
                     <div class="grid gap-6 md:grid-cols-2">
                         {projects.map((project) => (
                             <ProjectCard project={project} />
@@ -70,7 +80,9 @@ const { Tag, projects, posts } = Astro.props;
         {
             posts.length > 0 && (
                 <section class="space-y-6">
-                    <h2 class="text-2xl font-bold text-white">Essays</h2>
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                        Essays
+                    </h2>
                     <ul class="space-y-8">
                         {posts.map((post) => (
                             <li>

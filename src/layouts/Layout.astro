@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { CommandMenu } from "../components/CommandMenu";
+import ThemeToggle from "../components/ThemeToggle";
 
 interface Props {
     title: string;
@@ -23,29 +24,28 @@ const {
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-
-        <!-- Open Graph / Facebook -->
+        <!--
+Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={new URL(image, Astro.url)} />
-
-        <!-- Twitter -->
+        <!-- Twitter
+-->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={Astro.url} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-        <!-- Preload Fonts (Inter & JetBrains Mono) -->
+        <!--
+Preload Fonts (Inter & JetBrains Mono) -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
             rel="stylesheet"
         />
-
         <!-- KaTeX CSS for Math -->
         <link
             rel="stylesheet"
@@ -53,46 +53,122 @@ const {
             integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
             crossorigin="anonymous"
         />
-
         <title>{title}</title>
+        <script is:inline>
+            const theme = (() => {
+                if (
+                    typeof localStorage !== "undefined" &&
+                    localStorage.getItem("theme")
+                ) {
+                    return localStorage.getItem("theme");
+                }
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    return "dark";
+                }
+                return "light";
+            })();
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
     </head>
     <body
-        class="bg-zinc-950 text-zinc-200 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 flex flex-col min-h-screen"
+        class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-200 antialiased
+selection:bg-indigo-500/30 selection:text-indigo-600
+dark:selection:text-indigo-200 flex flex-col min-h-screen transition-colors
+duration-300"
     >
         <header
-            class="max-w-4xl mx-auto w-full px-6 py-8 flex items-center justify-between"
+            class="max-w-4xl mx-auto w-full px-6 py-8 flex
+items-center justify-between"
         >
             <a
                 href="/"
-                class="font-bold text-zinc-100 text-lg tracking-tight hover:text-indigo-400 transition-colors"
+                class="font-bold text-zinc-900
+dark:text-zinc-100 text-lg tracking-tight hover:text-indigo-600
+dark:hover:text-indigo-400 transition-colors"
             >
                 Noah Qin
             </a>
-            <nav class="flex gap-6 text-sm font-medium text-zinc-400">
-                <a href="/projects" class="hover:text-white transition-colors"
-                    >Projects</a
+            <div class="flex
+items-center gap-6">
+                <nav
+                    class="flex gap-6 text-sm font-medium text-zinc-600
+dark:text-zinc-400"
                 >
-                <a href="/blog" class="hover:text-white transition-colors"
-                    >Essays</a
+                    <a
+                        href="/projects"
+                        class="hover:text-zinc-900
+dark:hover:text-white transition-colors"
+                        >Projects</a
+                    >
+                    <a
+                        href="/blog"
+                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        >Essays</a
+                    >
+                    <a
+                        href="/about"
+                        class="hover:text-zinc-900 dark:hover:text-white
+transition-colors"
+                        >About</a
+                    >
+                </nav>
+                <div
+                    class="flex items-center gap-4
+border-l border-zinc-200 dark:border-zinc-800 pl-6"
                 >
-                <a href="/about" class="hover:text-white transition-colors"
-                    >About</a
-                >
-            </nav>
+                    <button
+                        id="search-btn"
+                        aria-label="Search"
+                        class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400
+dark:hover:text-white transition-colors"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><circle cx="11" cy="11" r="8"></circle><path
+                                d="m21
+21-4.3-4.3"></path></svg
+                        >
+                    </button>
+                    <ThemeToggle client:load />
+                </div>
+            </div>
         </header>
-
         <main class="max-w-4xl mx-auto px-6 py-12 w-full flex-grow">
             <slot />
         </main>
-
         <footer
-            class="max-w-4xl mx-auto w-full px-6 py-8 text-center text-zinc-500 text-sm font-mono"
+            class="max-w-4xl mx-auto w-full px-6 py-8 text-center
+text-zinc-500 text-sm font-mono"
         >
             <p>
                 &copy; {new Date().getFullYear()} Built with Astro & Tailwind.
             </p>
         </footer>
-
         <CommandMenu client:idle />
+        <script>
+            document
+                .getElementById("search-btn")
+                ?.addEventListener("click", () => {
+                    document.dispatchEvent(
+                        new KeyboardEvent("keydown", {
+                            key: "k",
+                            metaKey: true,
+                            bubbles: true,
+                        }),
+                    );
+                });
+        </script>
     </body>
 </html>

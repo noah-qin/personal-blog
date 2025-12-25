@@ -17,6 +17,11 @@ export const CommandMenu = () => {
         return () => document.removeEventListener('keydown', down);
     }, []);
 
+    const runCommand = (command: () => unknown) => {
+        setOpen(false);
+        command();
+    };
+
     return (
         <>
             {/* Toggle Button for mobile or click users */}
@@ -32,50 +37,89 @@ export const CommandMenu = () => {
                 open={open}
                 onOpenChange={setOpen}
                 label="Global Command Menu"
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[640px] bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl overflow-hidden p-0 z-[100]"
-                // Overlay styling
-                containerClassName="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99]"
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-full bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-2 z-50 overflow-hidden"
+                containerClassName="fixed inset-0 bg-zinc-950/20 dark:bg-zinc-950/80 backdrop-blur-sm z-40"
             >
-                <div className="flex items-center border-b border-zinc-800 px-3" cmdk-input-wrapper="">
-                    <svg className="w-4 h-4 text-zinc-500 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+                <div className="flex items-center border-b border-zinc-200 dark:border-zinc-800 px-3 pb-2 pt-1">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-zinc-400 dark:text-zinc-500 mr-2"
+                    >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
                     <Command.Input
-                        autoFocus
-                        placeholder="Type a command or search..."
-                        className="w-full bg-transparent py-4 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
+                        className="w-full bg-transparent border-none text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-none focus:ring-0 text-base h-10"
+                        placeholder="Search for projects, essays, or commands..."
                     />
-                    <div className="hidden md:flex items-center gap-1">
-                        <kbd className="bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded text-[10px] font-mono border border-zinc-700">ESC</kbd>
-                    </div>
                 </div>
-
-                <Command.List className="max-h-[300px] overflow-y-auto overflow-x-hidden p-2 scroll-py-2">
-                    <Command.Empty className="py-6 text-center text-sm text-zinc-500">No results found.</Command.Empty>
-
-                    <Command.Group heading="Navigation" className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider mb-2 px-2">
-                        <Item onSelect={() => window.location.href = '/'}>Home</Item>
-                        <Item onSelect={() => window.location.href = '/projects'}>Projects</Item>
-                        <Item onSelect={() => window.location.href = '/blog'}>Essays</Item>
-                        <Item onSelect={() => window.location.href = '/about'}>About</Item>
-                    </Command.Group>
-
-                    <Command.Group heading="Social" className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider mb-2 px-2 mt-4">
-                        <Item onSelect={() => window.open('https://github.com/imnotnoahhh', '_blank')}>GitHub</Item>
-                        <Item onSelect={() => window.open('https://twitter.com/imnotnoahhh', '_blank')}>Twitter / X</Item>
-                    </Command.Group>
+                <Command.List className="max-h-[min(400px,80vh)] overflow-y-auto overflow-x-hidden p-2">
+                    <div className="py-2">
+                        <Command.Group heading="Navigation" className="text-xs font-medium text-zinc-400 dark:text-zinc-500 mb-1 px-2 mt-2">
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "/")}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Home
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "/projects")}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Projects
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "/blog")}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Essays
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "/about")}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                About
+                            </Command.Item>
+                        </Command.Group>
+                        <Command.Group heading="Socials" className="text-xs font-medium text-zinc-400 dark:text-zinc-500 mb-1 px-2 mt-2">
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.open("https://github.com/imnotnoahhh", "_blank"))}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                GitHub
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.open("https://twitter.com", "_blank"))}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Twitter
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "mailto:contact@noahqin.com")}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Email
+                            </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.open("/resume.pdf", "_blank"))}
+                                className="flex items-center px-2 py-2 text-sm text-zinc-700 dark:text-zinc-300 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white cursor-pointer transition-colors"
+                            >
+                                Resume
+                            </Command.Item>
+                        </Command.Group>
+                    </div>
                 </Command.List>
             </Command.Dialog>
         </>
     );
 };
 
-// Helper Component for Item Styling
-function Item({ children, onSelect }: { children: React.ReactNode; onSelect: () => void }) {
-    return (
-        <Command.Item
-            onSelect={onSelect}
-            className="flex items-center gap-2 px-3 py-2.5 text-sm text-zinc-400 rounded-lg cursor-pointer hover:bg-zinc-800 hover:text-white aria-selected:bg-zinc-800 aria-selected:text-white transition-colors"
-        >
-            {children}
-        </Command.Item>
-    );
-}
+

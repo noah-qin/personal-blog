@@ -35,27 +35,27 @@ const { Content } = await render(post);
                 </time>
             </div>
             <h1
-                class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4"
+                class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4"
             >
                 {post.data.title}
             </h1>
-            <p class="text-zinc-400 text-lg">
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">
                 {post.data.description}
             </p>
         </header>
 
         <div
-            class="prose prose-invert prose-zinc max-w-none prose-headings:font-bold prose-a:text-indigo-400 hover:prose-a:text-indigo-300"
+            class="prose prose-zinc dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 hover:prose-a:text-indigo-500 dark:hover:prose-a:text-indigo-300"
         >
             <Content />
         </div>
 
         <div
-            class="mt-16 pt-8 border-t border-zinc-800 flex justify-between items-center"
+            class="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center"
         >
             <a
                 href="/blog"
-                class="text-zinc-500 hover:text-white transition-colors text-sm"
+                class="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors text-sm"
             >
                 &larr; Back to Essays
             </a>

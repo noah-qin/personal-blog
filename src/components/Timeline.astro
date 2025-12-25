@@ -1,0 +1,57 @@
+---
+const events = [
+  {
+    year: "2024",
+    title: "Published Prior-Guided Augmentation Policy",
+    description: "First Author Research Paper. Creating novel data augmentation strategies for Computer Vision.",
+    type: "research"
+  },
+  {
+    year: "2024",
+    title: "NightGuard Launch",
+    description: "Released my second iOS app NightGuard to the App Store. Achieved 100+ downloads in first week.",
+    type: "app"
+  },
+  {
+    year: "2023",
+    title: "Started Learning iOS Development",
+    description: "Dove deep into SwiftUI and the Apple Ecosystem. Built several prototype apps.",
+    type: "milestone"
+  },
+  {
+    year: "2022",
+    title: "Hello World",
+    description: "Wrote my first line of Python code. The journey began.",
+    type: "milestone"
+  }
+];
+---
+
+<div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-200 dark:before:via-zinc-800 before:to-transparent">
+  {events.map((event) => (
+    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+      
+      <!-- Icon -->
+      <div class="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-zinc-500 dark:text-zinc-400">
+         {event.type === 'app' ? (
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+         ) : event.type === 'research' ? (
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+         ) : (
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+         )}
+      </div>
+      
+      <!-- Content -->
+      <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/20 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors shadow-sm dark:shadow-none">
+        <div class="flex items-center justify-between space-x-2 mb-1">
+          <div class="font-bold text-zinc-900 dark:text-zinc-200">{event.title}</div>
+          <time class="font-mono text-xs text-indigo-600 dark:text-indigo-400">{event.year}</time>
+        </div>
+        <div class="text-zinc-600 dark:text-zinc-400 text-sm">
+            {event.description}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

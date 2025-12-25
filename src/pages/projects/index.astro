@@ -12,19 +12,22 @@ const sortedProjects = allProjects.sort(
 // but for now we list all with a nice badge.
 ---
 
-<Layout title="Projects | Portfolio">
+<Layout title="Projects | Noah Qin">
     <div class="space-y-8">
-        <div class="border-b border-zinc-800 pb-8">
-            <h1 class="text-3xl font-bold tracking-tight text-white mb-4">
+        <div>
+            <h1
+                class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4"
+            >
                 Projects
             </h1>
-            <p class="text-zinc-400 max-w-2xl">
-                A collection of things I've built, ranging from iOS apps to AI
-                research papers.
+            <p
+                class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed"
+            >
+                App Store apps, research papers, and open source experiments.
             </p>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sortedProjects.map((project) => <ProjectCard project={project} />)}
         </div>
     </div>
