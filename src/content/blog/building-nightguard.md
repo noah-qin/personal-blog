@@ -1,7 +1,7 @@
 ---
 title: "Building NightGuard: The Irony of Sleep"
 description: "How staying up late for 3 months helped me build an app to fix my sleep."
-publishDate: "2025-11-28"
+publishDate: "2025-11-28T22:15:00"
 tags: ["DevLog", "SwiftUI", "Product"]
 image: "/og-default.png"
 ---

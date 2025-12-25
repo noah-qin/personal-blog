@@ -1,7 +1,7 @@
 ---
 title: "Reflections: Vivo Developer Conference 2025"
 description: "Witnessing the intersection of BlueLM AI and humanistic technology."
-publishDate: "2025-10-10"
+publishDate: "2025-10-10T14:30:00"
 tags: ["Event", "AI", "Accessibility"]
 image: "/images/vivo-conf-1.jpg"
 ---
