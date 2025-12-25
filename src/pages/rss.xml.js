@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 export async function GET(context) {
     const posts = await getCollection('blog');
     return rss({
-        title: 'Noah Qin - Essays',
+        title: 'Noah Qin - Writing',
         description: 'Reflection on engineering, research, and the future.',
         site: context.site,
         stylesheet: '/rss-styles.xsl',
