@@ -35,7 +35,7 @@ export default function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors focus:outline-none"
+            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors focus:outline-none"
             aria-label="Toggle Theme"
         >
             {theme === "light" ? (

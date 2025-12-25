@@ -27,12 +27,12 @@ const events = [
 ];
 ---
 
-<div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-200 dark:before:via-zinc-800 before:to-transparent">
+<div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[var(--color-border)] before:to-transparent">
   {events.map((event) => (
     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
       
       <!-- Icon -->
-      <div class="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-zinc-500 dark:text-zinc-400">
+      <div class="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border)] bg-[var(--color-card)] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-[var(--color-text-muted)]">
          {event.type === 'app' ? (
              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
          ) : event.type === 'research' ? (
@@ -43,12 +43,12 @@ const events = [
       </div>
       
       <!-- Content -->
-      <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/20 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors shadow-sm dark:shadow-none">
+      <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] hover:shadow-md transition-all shadow-sm">
         <div class="flex items-center justify-between space-x-2 mb-1">
-          <div class="font-bold text-zinc-900 dark:text-zinc-200">{event.title}</div>
-          <time class="font-mono text-xs text-indigo-600 dark:text-indigo-400">{event.year}</time>
+          <div class="font-bold text-[var(--color-text-main)]">{event.title}</div>
+          <time class="font-mono text-xs text-[var(--color-primary)]">{event.year}</time>
         </div>
-        <div class="text-zinc-600 dark:text-zinc-400 text-sm">
+        <div class="text-[var(--color-text-muted)] text-sm">
             {event.description}
         </div>
       </div>

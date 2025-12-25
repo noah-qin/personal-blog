@@ -8,14 +8,37 @@
     --font-mono: 'JetBrains Mono', monospace;
 }
 
+:root {
+    /* Light Mode - Warm/Yellow (#fffffe, #272343, #ffd803) */
+    --color-bg: #fffffe;
+    --color-text-main: #272343;
+    --color-text-muted: #2d334a;
+    --color-primary: #ffd803;
+    --color-primary-fg: #272343;
+    --color-border: #d1d5db;
+}
+
+.dark {
+    /* Dark Mode - Minimal/Purple (#16161a, #fffffe, #7f5af0) */
+    --color-bg: #16161a;
+    --color-text-main: #fffffe;
+    --color-text-muted: #94a1b2;
+    --color-primary: #7f5af0;
+    --color-primary-fg: #fffffe;
+    --color-border: #242629;
+}
+
 html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
-    @apply bg-white dark:bg-zinc-950;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
 }
 
 body {
-    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-200 antialiased transition-colors duration-300;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    @apply antialiased transition-colors duration-300;
 }
 
 /* Custom Scrollbar for Geeky Vibe */

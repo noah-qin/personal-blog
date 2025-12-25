@@ -25,7 +25,7 @@ const {
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
         <!--
 Open Graph / Facebook -->
@@ -90,56 +90,44 @@ Preload Fonts (Inter & JetBrains Mono) -->
         </script>
     </head>
     <body
-        class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-200 antialiased
-selection:bg-indigo-500/30 selection:text-indigo-600
-dark:selection:text-indigo-200 flex flex-col min-h-screen transition-colors
-duration-300"
+        class="antialiased selection:bg-[var(--color-primary)] selection:text-[var(--color-primary-fg)] flex flex-col min-h-screen transition-colors duration-300"
     >
         <header
-            class="max-w-4xl mx-auto w-full px-6 py-8 flex
-items-center justify-between"
+            class="max-w-4xl mx-auto w-full px-6 py-8 flex items-center justify-between"
         >
             <a
                 href="/"
-                class="font-bold text-zinc-900
-dark:text-zinc-100 text-lg tracking-tight hover:text-indigo-600
-dark:hover:text-indigo-400 transition-colors"
+                class="font-mono font-bold text-lg tracking-tight hover:text-[var(--color-primary)] transition-colors"
             >
                 Noah Qin
             </a>
-            <div class="flex
-items-center gap-6">
+            <div class="flex items-center gap-6">
                 <nav
-                    class="flex gap-6 text-sm font-medium text-zinc-600
-dark:text-zinc-400"
+                    class="flex gap-6 text-sm font-medium text-[var(--color-text-muted)]"
                 >
                     <a
                         href="/projects"
-                        class="hover:text-zinc-900
-dark:hover:text-white transition-colors"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
                         >Projects</a
                     >
                     <a
                         href="/blog"
-                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
-                        >Essays</a
+                        class="hover:text-[var(--color-text-main)] transition-colors"
+                        >Writing</a
                     >
                     <a
                         href="/about"
-                        class="hover:text-zinc-900 dark:hover:text-white
-transition-colors"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
                         >About</a
                     >
                 </nav>
                 <div
-                    class="flex items-center gap-4
-border-l border-zinc-200 dark:border-zinc-800 pl-6"
+                    class="flex items-center gap-4 border-l border-[var(--color-border)] pl-6"
                 >
                     <button
                         id="search-btn"
                         aria-label="Search"
-                        class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400
-dark:hover:text-white transition-colors"
+                        class="text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -152,8 +140,7 @@ dark:hover:text-white transition-colors"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             ><circle cx="11" cy="11" r="8"></circle><path
-                                d="m21
-21-4.3-4.3"></path></svg
+                                d="m21 21-4.3-4.3"></path></svg
                         >
                     </button>
                     <ThemeToggle client:load />
@@ -164,7 +151,7 @@ dark:hover:text-white transition-colors"
             <slot />
         </main>
         <footer
-            class="max-w-4xl mx-auto w-full px-6 py-8 text-center text-sm font-mono text-zinc-500 border-t border-zinc-200 dark:border-zinc-800"
+            class="max-w-4xl mx-auto w-full px-6 py-8 text-center text-sm font-mono text-[var(--color-text-muted)] border-t border-[var(--color-border)]"
         >
             <div
                 class="flex flex-col md:flex-row justify-between items-center gap-4"
@@ -175,19 +162,19 @@ dark:hover:text-white transition-colors"
                 <div class="flex gap-4">
                     <a
                         href="/rss.xml"
-                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
                         >RSS</a
                     >
                     <a
                         href="https://github.com/imnotnoahhh"
                         target="_blank"
-                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
                         >GitHub</a
                     >
                     <a
                         href="https://twitter.com"
                         target="_blank"
-                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
                         >Twitter</a
                     >
                 </div>
