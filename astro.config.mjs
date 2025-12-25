@@ -22,7 +22,7 @@ export function remarkReadingTime() {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://noahqin.com',
+  site: 'https://noahnote.com',
   vite: {
     plugins: [tailwindcss()]
   },
