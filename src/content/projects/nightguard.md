@@ -43,5 +43,5 @@ An immersive mode that prevents phone usage before bed.
 
 ## 🚀 Impact
 *   **50+ Downloads** on the App Store.
-*   **4.9/5.0 Star Rating** on the App Store.
+*   **5.0 Star Rating** on the App Store.
 *   Selected as a showcase project for the school's CS fair.
