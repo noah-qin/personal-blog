@@ -35,10 +35,10 @@ export default function GiscusWidget() {
         <div className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
             <Giscus
                 id="comments"
-                repo="imnotnoahhh/personal-blog" // PLEASE CHANGE THIS TO YOUR REPO
-                repoId="R_kgDOMxxxxxxxx" // PLEASE CHANGE THIS TO YOUR REPO ID
+                repo="imnotnoahhh/personal-blog"
+                repoId="R_kgDOQusUUA"
                 category="Announcements"
-                categoryId="DIC_kwDOMxxxxxxxx"
+                categoryId="DIC_kwDOQusUUM4C0O8G"
                 mapping="pathname"
                 term="Welcome to my blog!"
                 reactionsEnabled="1"
