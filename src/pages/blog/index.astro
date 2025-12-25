@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<Layout title="Essays | Thoughts & Writings">
+    <div class="space-y-12 max-w-2xl mx-auto">
+        <div class="border-b border-zinc-800 pb-8 text-center md:text-left">
+            <h1 class="text-3xl font-bold tracking-tight text-white mb-4">
+                Essays
+            </h1>
+            <p class="text-zinc-400">
+                Reflection on engineering, research, and the future.
+            </p>
+        </div>
+
+        <ul class="space-y-10">
+            {
+                sortedPosts.map((post) => (
+                    <li>
+                        <a href={`/blog/${post.slug}`} class="group block">
+                            <article class="space-y-2">
+                                <div class="flex items-center gap-3 text-sm text-zinc-500 font-mono">
+                                    <time
+                                        datetime={post.data.publishDate.toISOString()}
+                                    >
+                                        {post.data.publishDate.toLocaleDateString(
+                                            "en-US",
+                                            {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </time>
+                                </div>
+
+                                <h2 class="text-xl md:text-2xl font-bold text-zinc-200 group-hover:text-indigo-400 transition-colors">
+                                    {post.data.title}
+                                </h2>
+
+                                <p class="text-zinc-400 leading-relaxed">
+                                    {post.data.description}
+                                </p>
+
+                                <div class="pt-2 text-sm text-indigo-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                    Read more &rarr;
+                                </div>
+                            </article>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</Layout>
