@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import { CommandMenu } from "../components/CommandMenu";
 import ThemeToggle from "../components/ThemeToggle";
+import { ClientRouter } from "astro:transitions";
+import CopyCode from "../components/CopyCode.astro";
 
 interface Props {
     title: string;
@@ -19,6 +21,7 @@ const {
 <!doctype html>
 <html lang="en">
     <head>
+        <ClientRouter />
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
@@ -55,7 +58,7 @@ Preload Fonts (Inter & JetBrains Mono) -->
         />
         <title>{title}</title>
         <script is:inline>
-            const theme = (() => {
+            const getTheme = () => {
                 if (
                     typeof localStorage !== "undefined" &&
                     localStorage.getItem("theme")
@@ -66,12 +69,24 @@ Preload Fonts (Inter & JetBrains Mono) -->
                     return "dark";
                 }
                 return "light";
-            })();
-            if (theme === "dark") {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
+            };
+
+            const setTheme = (theme) => {
+                if (theme === "dark") {
+                    document.documentElement.classList.add("dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                }
+                window.localStorage.setItem("theme", theme);
+            };
+
+            // Initial execution
+            setTheme(getTheme());
+
+            // Handle View Transitions
+            document.addEventListener("astro:after-swap", () => {
+                setTheme(getTheme());
+            });
         </script>
     </head>
     <body
@@ -149,14 +164,37 @@ dark:hover:text-white transition-colors"
             <slot />
         </main>
         <footer
-            class="max-w-4xl mx-auto w-full px-6 py-8 text-center
-text-zinc-500 text-sm font-mono"
+            class="max-w-4xl mx-auto w-full px-6 py-8 text-center text-sm font-mono text-zinc-500 border-t border-zinc-200 dark:border-zinc-800"
         >
-            <p>
-                &copy; {new Date().getFullYear()} Built with Astro & Tailwind.
-            </p>
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+                <p>
+                    &copy; {new Date().getFullYear()} Noah Qin. Crafted with Astro.
+                </p>
+                <div class="flex gap-4">
+                    <a
+                        href="/rss.xml"
+                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        >RSS</a
+                    >
+                    <a
+                        href="https://github.com/imnotnoahhh"
+                        target="_blank"
+                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        >GitHub</a
+                    >
+                    <a
+                        href="https://twitter.com"
+                        target="_blank"
+                        class="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                        >Twitter</a
+                    >
+                </div>
+            </div>
         </footer>
         <CommandMenu client:idle />
+        <CopyCode />
         <script>
             document
                 .getElementById("search-btn")
