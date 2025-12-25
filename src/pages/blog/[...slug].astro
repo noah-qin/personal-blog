@@ -21,6 +21,8 @@ const { Content, remarkPluginFrontmatter } = await render(post);
     title={post.data.title}
     description={post.data.description}
     image={post.data.heroImage}
+    type="article"
+    publishDate={post.data.publishDate}
 >
     <article class="max-w-2xl mx-auto">
         <header class="mb-10 text-center">

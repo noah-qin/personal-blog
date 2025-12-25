@@ -9,13 +9,43 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
+    type?: "website" | "article";
+    publishDate?: Date;
 }
 
 const {
     title,
     description = "International High Schooler, Builder, Researcher.",
     image = "/og-default.png",
+    type = "website",
+    publishDate,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// JSON-LD Schema
+const schema =
+    type === "article"
+        ? {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: title,
+              image: new URL(image, Astro.url).href,
+              datePublished: publishDate?.toISOString(),
+              author: {
+                  "@type": "Person",
+                  name: "Noah Qin",
+                  url: Astro.site,
+              },
+          }
+        : {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Noah Qin",
+              url: Astro.site,
+              sameAs: ["https://github.com/imnotnoahhh", "https://twitter.com"],
+              jobTitle: "Student & Developer",
+          };
 ---
 
 <!doctype html>
@@ -89,6 +119,11 @@ Preload Fonts (Inter & JetBrains Mono) -->
                 setTheme(getTheme());
             });
         </script>
+        <script
+            is:inline
+            set:html={JSON.stringify(schema)}
+            type="application/ld+json"
+        />
     </head>
     <body
         class="antialiased selection:bg-[var(--color-primary)] selection:text-[var(--color-primary-fg)] flex flex-col min-h-screen transition-colors duration-300"
@@ -195,6 +230,21 @@ Preload Fonts (Inter & JetBrains Mono) -->
                         }),
                     );
                 });
+
+            // Scroll Progress Bar Logic
+            window.addEventListener("scroll", () => {
+                const winScroll =
+                    document.body.scrollTop ||
+                    document.documentElement.scrollTop;
+                const height =
+                    document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                const progressBar = document.getElementById("progress-bar");
+                if (progressBar) {
+                    progressBar.style.width = scrolled + "%";
+                }
+            });
         </script>
     </body>
 </html>
