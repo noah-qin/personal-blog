@@ -102,7 +102,7 @@ export const CommandMenu = () => {
                                 Twitter
                             </Command.Item>
                             <Command.Item
-                                onSelect={() => runCommand(() => window.location.href = "mailto:contact@noahqin.com")}
+                                onSelect={() => runCommand(() => window.location.href = "mailto:blog@noahnote.com")}
                                 className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
                             >
                                 Email
