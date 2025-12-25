@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <Layout title="Home | Builder & Researcher">
@@ -48,30 +49,7 @@ import { getCollection } from "astro:content";
 							a.data.publishDate.valueOf(),
 					)
 					.slice(0, 2)
-					.map((project) => (
-						<a
-							href={`/projects/${project.slug}`}
-							class="group block p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/50 hover:bg-zinc-900 hover:border-zinc-700 transition-all"
-						>
-							<div class="flex items-center justify-between mb-2">
-								<span
-									class={`text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded ${
-										project.data.type === "app"
-											? "bg-blue-500/10 text-blue-400"
-											: "bg-purple-500/10 text-purple-400"
-									}`}
-								>
-									{project.data.type}
-								</span>
-							</div>
-							<h3 class="text-lg font-bold text-zinc-200 group-hover:text-white">
-								{project.data.title}
-							</h3>
-							<p class="text-sm text-zinc-400 mt-1 line-clamp-2">
-								{project.data.description}
-							</p>
-						</a>
-					))
+					.map((project) => <ProjectCard project={project} />)
 			}
 		</div>
 	</section>

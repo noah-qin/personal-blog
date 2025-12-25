@@ -1,0 +1,85 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import PostRow from "../../components/PostRow.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const allProjects = await getCollection("projects");
+    const allPosts = await getCollection("blog");
+
+    // Collect all unique tags
+    const tags = new Set<string>();
+    allProjects.forEach((project) => {
+        project.data.tags?.forEach((tag) => tags.add(tag));
+    });
+    allPosts.forEach((post) => {
+        post.data.tags?.forEach((tag) => tags.add(tag));
+    });
+
+    // Generate paths
+    return Array.from(tags).map((tag) => {
+        const filteredProjects = allProjects.filter((project) =>
+            project.data.tags?.includes(tag),
+        );
+        const filteredPosts = allPosts.filter((post) =>
+            post.data.tags?.includes(tag),
+        );
+
+        return {
+            params: { tag },
+            props: {
+                Tag: tag,
+                projects: filteredProjects,
+                posts: filteredPosts,
+            },
+        };
+    });
+}
+
+const { Tag, projects, posts } = Astro.props;
+---
+
+<Layout title={`#${Tag} | Topic`}>
+    <div class="space-y-12">
+        <header>
+            <div class="flex items-center gap-2 text-zinc-500 mb-2">
+                <a href="/" class="hover:text-white transition-colors">Home</a>
+                <span>/</span>
+                <span>Tags</span>
+            </div>
+            <h1 class="text-4xl font-bold text-white">#{Tag}</h1>
+            <p class="text-zinc-400 mt-2">
+                {projects.length} Projects, {posts.length} Essays
+            </p>
+        </header>
+
+        {
+            projects.length > 0 && (
+                <section class="space-y-6">
+                    <h2 class="text-2xl font-bold text-white">Projects</h2>
+                    <div class="grid gap-6 md:grid-cols-2">
+                        {projects.map((project) => (
+                            <ProjectCard project={project} />
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+
+        {
+            posts.length > 0 && (
+                <section class="space-y-6">
+                    <h2 class="text-2xl font-bold text-white">Essays</h2>
+                    <ul class="space-y-8">
+                        {posts.map((post) => (
+                            <li>
+                                <PostRow post={post} />
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )
+        }
+    </div>
+</Layout>

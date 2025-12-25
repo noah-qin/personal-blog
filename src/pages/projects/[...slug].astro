@@ -16,7 +16,11 @@ const project = Astro.props;
 const { Content } = await render(project);
 ---
 
-<Layout title={project.data.title}>
+<Layout
+    title={project.data.title}
+    description={project.data.description}
+    image={project.data.image}
+>
     <article class="max-w-2xl mx-auto">
         <div class="mb-10 text-center">
             <div class="flex items-center justify-center gap-2 mb-4">
@@ -44,9 +48,22 @@ const { Content } = await render(project);
                 {project.data.title}
             </h1>
 
-            <p class="text-xl text-zinc-400 leading-relaxed mb-8">
+            <p class="text-xl text-zinc-400 leading-relaxed mb-6">
                 {project.data.description}
             </p>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                {
+                    project.data.tags.map((tag) => (
+                        <a
+                            href={`/tags/${tag}`}
+                            class="px-3 py-1 text-sm rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+                        >
+                            #{tag}
+                        </a>
+                    ))
+                }
+            </div>
 
             <div class="flex justify-center gap-4">
                 {
