@@ -37,8 +37,7 @@ export const CommandMenu = () => {
                 open={open}
                 onOpenChange={setOpen}
                 label="Global Command Menu"
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-full bg-[var(--color-card)] rounded-xl shadow-2xl border border-[var(--color-border)] p-2 z-50 overflow-hidden"
-                containerClassName="fixed inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm z-40"
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-full bg-[var(--color-card)] glass-effect rounded-xl shadow-2xl border border-[var(--color-border)] p-2 z-50 overflow-hidden"
             >
                 <div className="flex items-center border-b border-[var(--color-border)] px-3 pb-2 pt-1">
                     <svg

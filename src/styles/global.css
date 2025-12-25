@@ -16,6 +16,8 @@
     --color-primary: #ffd803;
     --color-primary-fg: #272343;
     --color-border: #d1d5db;
+    --color-card: rgba(255, 255, 255, 0.7);
+    --color-card-muted: #f3f4f6;
 }
 
 .dark {
@@ -26,6 +28,8 @@
     --color-primary: #7f5af0;
     --color-primary-fg: #fffffe;
     --color-border: #242629;
+    --color-card: rgba(22, 22, 26, 0.75);
+    --color-card-muted: #242629;
 }
 
 html {
@@ -57,4 +61,10 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #52525b;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
 }
