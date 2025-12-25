@@ -5,7 +5,7 @@ export async function GET(context) {
     const posts = await getCollection('blog');
     return rss({
         title: 'Noah Qin - Writing',
-        description: 'Reflection on engineering, research, and the future.',
+        description: 'Reflection on coding, research, and the future.',
         site: context.site,
         stylesheet: '/rss-styles.xsl',
         items: posts.map((post) => ({
