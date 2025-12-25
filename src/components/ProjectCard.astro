@@ -9,8 +9,13 @@ const { project } = Astro.props;
 ---
 
 <div
-    class="group relative flex flex-col gap-3 p-6 rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] hover:shadow-lg transition-all duration-300 shadow-sm"
+    class="group relative flex flex-col gap-3 p-6 rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 glass-effect overflow-hidden"
 >
+    <!-- Card Background Gradient Interaction -->
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-transparent to-[var(--color-primary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+    >
+    </div>
     <a
         href={`/projects/${project.slug}`}
         class="absolute inset-0 z-0 rounded-2xl"

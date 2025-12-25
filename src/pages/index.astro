@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 import PostRow from "../components/PostRow.astro";
+import HeroImage from "../components/HeroImage.astro";
 
 const featuredProjects = (await getCollection("projects"))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -14,38 +15,80 @@ const latestPosts = (await getCollection("blog"))
 ---
 
 <Layout title="Home | Noah Qin">
-	<section class="py-12 md:py-20">
-		<h1
-			class="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-6"
-		>
-			Hi, I'm <span class="text-indigo-600 dark:text-indigo-400"
-				>Noah Qin</span
-			>.
-		</h1>
+	<section
+		class="py-12 md:py-20 flex flex-col-reverse md:flex-row items-center gap-12"
+	>
+		<div class="flex-1 space-y-6">
+			<h1
+				class="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
+			>
+				Hi, I'm <span class="text-indigo-600 dark:text-indigo-400"
+					>Noah Qin</span
+				>.
+			</h1>
+			<p
+				class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed"
+			>
+				I'm a high schooler from China building <span
+					class="text-zinc-900 dark:text-zinc-200 font-medium"
+					>iOS apps</span
+				> and researching <span
+					class="text-zinc-900 dark:text-zinc-200 font-medium"
+					>AI agents</span
+				>. I write about engineering, design, and my journey in comp
+				sci.
+			</p>
+			<div class="flex gap-4 pt-2">
+				<a
+					href="/projects"
+					class="px-5 py-2.5 bg-zinc-900 text-white rounded-lg font-medium hover:bg-zinc-800 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200"
+				>
+					View Projects
+				</a>
+				<a
+					href="/blog"
+					class="px-5 py-2.5 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-transparent dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
+				>
+					Read Essays
+				</a>
+			</div>
+		</div>
+
+		<div class="flex-1 w-full flex justify-center md:justify-end">
+			<HeroImage />
+		</div>
+	</section>
+
+	<!-- Tech Stack Mini-Section -->
+	<section class="mb-20">
 		<p
-			class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed"
+			class="text-sm font-semibold text-zinc-500 mb-6 uppercase tracking-wider"
 		>
-			I'm a high schooler from China building <span
-				class="text-zinc-900 dark:text-zinc-200 font-medium"
-				>iOS apps</span
-			> and researching <span
-				class="text-zinc-900 dark:text-zinc-200 font-medium"
-				>AI agents</span
-			>. I write about engineering, design, and my journey in comp sci.
+			Technologies I work with
 		</p>
-		<div class="flex gap-4 pt-6">
-			<a
-				href="/projects"
-				class="px-4 py-2 bg-zinc-900 text-white rounded-lg font-medium hover:bg-zinc-800 transition-colors"
+		<div
+			class="flex flex-wrap gap-8 items-center opacity-75 grayscale hover:grayscale-0 transition-all duration-500"
+		>
+			<!-- Icons using simple text for now, could be SVGs -->
+			<span class="font-bold text-xl text-[#3178C6]" title="TypeScript"
+				>TypeScript</span
 			>
-				View Projects
-			</a>
-			<a
-				href="/blog"
-				class="px-4 py-2 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors"
+			<span class="font-bold text-xl text-[#F05138]" title="Swift"
+				>Swift</span
 			>
-				Read Essays
-			</a>
+			<span class="font-bold text-xl text-[#61DAFB]" title="React"
+				>React</span
+			>
+			<span class="font-bold text-xl text-[#EE4C2C]" title="Astro"
+				>Astro</span
+			>
+			<span class="font-bold text-xl text-[#3776AB]" title="Python"
+				>Python</span
+			>
+			<span
+				class="font-bold text-xl text-[#000000] dark:text-white"
+				title="Next.js">Next.js</span
+			>
 		</div>
 	</section>
 
