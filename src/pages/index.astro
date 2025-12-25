@@ -20,14 +20,15 @@ const latestPosts = (await getCollection("blog"))
 	>
 		<div class="flex-1 space-y-6">
 			<h1
-				class="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
+				class="animate-in-1 text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
 			>
-				Hi, I'm <span class="text-indigo-600 dark:text-indigo-400"
+				Hi, I'm <span
+					class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-400"
 					>Noah Qin</span
 				>.
 			</h1>
 			<p
-				class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed"
+				class="animate-in-2 text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed"
 			>
 				I'm a high schooler from China building <span
 					class="text-zinc-900 dark:text-zinc-200 font-medium"
@@ -38,7 +39,7 @@ const latestPosts = (await getCollection("blog"))
 				>. I write about engineering, design, and my journey in comp
 				sci.
 			</p>
-			<div class="flex gap-4 pt-2">
+			<div class="animate-in-3 flex gap-4 pt-2">
 				<a
 					href="/projects"
 					class="px-5 py-2.5 bg-zinc-900 text-white rounded-lg font-medium hover:bg-zinc-800 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200"
@@ -54,7 +55,9 @@ const latestPosts = (await getCollection("blog"))
 			</div>
 		</div>
 
-		<div class="flex-1 w-full flex justify-center md:justify-end">
+		<div
+			class="flex-1 w-full flex justify-center md:justify-end animate-in-4"
+		>
 			<HeroImage />
 		</div>
 	</section>

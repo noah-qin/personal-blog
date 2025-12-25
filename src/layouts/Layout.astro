@@ -43,7 +43,7 @@ const schema =
               "@type": "Person",
               name: "Noah Qin",
               url: Astro.site,
-              sameAs: ["https://github.com/imnotnoahhh", "https://twitter.com"],
+              sameAs: ["https://github.com/imnotnoahhh"],
               jobTitle: "Student & Developer",
           };
 ---
@@ -129,7 +129,7 @@ Preload Fonts (Inter & JetBrains Mono) -->
         class="antialiased selection:bg-[var(--color-primary)] selection:text-[var(--color-primary-fg)] flex flex-col min-h-screen transition-colors duration-300"
     >
         <header
-            class="max-w-4xl mx-auto w-full px-6 py-8 flex items-center justify-between"
+            class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-[#16161a]/70 border-b border-transparent transition-all duration-300 max-w-4xl mx-auto w-full px-6 py-6 flex items-center justify-between"
         >
             <a
                 href="/"
@@ -207,12 +207,6 @@ Preload Fonts (Inter & JetBrains Mono) -->
                         class="hover:text-[var(--color-text-main)] transition-colors"
                         >GitHub</a
                     >
-                    <a
-                        href="https://twitter.com"
-                        target="_blank"
-                        class="hover:text-[var(--color-text-main)] transition-colors"
-                        >Twitter</a
-                    >
                 </div>
             </div>
         </footer>
@@ -230,21 +224,6 @@ Preload Fonts (Inter & JetBrains Mono) -->
                         }),
                     );
                 });
-
-            // Scroll Progress Bar Logic
-            window.addEventListener("scroll", () => {
-                const winScroll =
-                    document.body.scrollTop ||
-                    document.documentElement.scrollTop;
-                const height =
-                    document.documentElement.scrollHeight -
-                    document.documentElement.clientHeight;
-                const scrolled = (winScroll / height) * 100;
-                const progressBar = document.getElementById("progress-bar");
-                if (progressBar) {
-                    progressBar.style.width = scrolled + "%";
-                }
-            });
         </script>
     </body>
 </html>

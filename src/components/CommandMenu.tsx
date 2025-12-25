@@ -96,12 +96,6 @@ export const CommandMenu = () => {
                                 GitHub
                             </Command.Item>
                             <Command.Item
-                                onSelect={() => runCommand(() => window.open("https://twitter.com", "_blank"))}
-                                className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
-                            >
-                                Twitter
-                            </Command.Item>
-                            <Command.Item
                                 onSelect={() => runCommand(() => window.location.href = "mailto:blog@noahnote.com")}
                                 className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
                             >

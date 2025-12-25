@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 ---
 
 <div
-    class="relative w-full aspect-square max-w-[320px] mx-auto hidden md:block"
+    class="relative w-full aspect-square max-w-[420px] mx-auto hidden md:block"
 >
     <!-- Abstract Background Blob -->
     <div
@@ -16,13 +16,13 @@ import { Image } from "astro:assets";
         class="relative z-10 w-full h-full p-6 flex items-center justify-center animate-float"
     >
         <div
-            class="relative w-48 h-48 bg-[var(--color-card)] rounded-3xl shadow-2xl flex items-center justify-center border border-[var(--color-border)] glass-effect overflow-hidden"
+            class="relative w-72 h-72 bg-[var(--color-card)] rounded-3xl shadow-2xl flex items-center justify-center border border-[var(--color-border)] glass-effect overflow-hidden"
         >
             <!-- Using the SVG favicon as the main visual -->
             <img
                 src="/favicon.svg"
                 alt="Noah Qin Avatar"
-                class="w-28 h-28 object-contain drop-shadow-lg"
+                class="w-44 h-44 object-contain drop-shadow-lg"
             />
 
             <!-- Shine effect -->
