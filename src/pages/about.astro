@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/Timeline.astro";
+import { SITE } from "../site.config";
 ---
 
-<Layout title="About | Noah Qin">
+<Layout title={`About | ${SITE.name}`}>
     <div class="max-w-2xl mx-auto space-y-12">
         <section>
             <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-6">
@@ -52,7 +53,7 @@ import Timeline from "../components/Timeline.astro";
             </h2>
             <li class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                <strong>Languages:</strong> Swift, Python, Java, SQL
+                <strong>Languages:</strong> Swift, Python, Java, Rust, SQL
             </li>
             <li class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
@@ -77,29 +78,7 @@ import Timeline from "../components/Timeline.astro";
             </h2>
             <div class="flex gap-4">
                 <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200 font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                        ></path><polyline points="7 10 12 15 17 10"
-                        ></polyline><line x1="12" x2="12" y1="15" y2="3"
-                        ></line></svg
-                    >
-                    Download Resume
-                </a>
-                <a
-                    href="https://github.com/imnotnoahhh"
+                    href={SITE.github}
                     target="_blank"
                     class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-800 text-white dark:text-zinc-200 font-medium hover:bg-zinc-800 dark:hover:bg-zinc-700 transition-colors"
                     aria-label="GitHub"
@@ -119,9 +98,9 @@ import Timeline from "../components/Timeline.astro";
             </div>
             <p class="mt-4 text-sm text-zinc-600 dark:text-zinc-500">
                 Contact me via <a
-                    href="mailto:blog@noahnote.com"
+                    href={`mailto:${SITE.email}`}
                     class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
-                    >blog@noahnote.com</a
+                    >{SITE.email}</a
                 >
             </p>
         </section>

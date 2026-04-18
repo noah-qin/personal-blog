@@ -4,7 +4,7 @@ description: "A comprehensive workout tracker designed and built in one month, f
 publishDate: "2026-02-07"
 tags: ["iOS", "watchOS", "SwiftUI", "HealthKit", "Fitness"]
 type: "app"
-stats: "In Review"
+stats: "Available on App Store"
 ---
 
 # IronSets
@@ -17,7 +17,7 @@ This project was conceived, designed, and developed within a single month. The g
 
 *   **Timeline**: 1 Month Sprint
 *   **Submission Date**: February 7, 2026
-*   **Status**: Currently under review on the App Store.
+*   **Status**: Available on the App Store.
 
 ## 🛠 Tech Stack
 

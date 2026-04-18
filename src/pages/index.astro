@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 import PostRow from "../components/PostRow.astro";
 import HeroImage from "../components/HeroImage.astro";
+import { SITE } from "../site.config";
 
 const featuredProjects = (await getCollection("projects"))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -14,7 +15,7 @@ const latestPosts = (await getCollection("blog"))
 	.slice(0, 3);
 ---
 
-<Layout title="Home | Noah Qin">
+<Layout title={`Home | ${SITE.name}`}>
 	<section
 		class="py-12 md:py-20 flex flex-col-reverse md:flex-row items-center gap-12"
 	>
@@ -80,6 +81,9 @@ const latestPosts = (await getCollection("blog"))
 			>
 			<span class="font-bold text-xl text-[#5382a1]" title="Java"
 				>Java</span
+			>
+			<span class="font-bold text-xl text-[#DEA584]" title="Rust"
+				>Rust</span
 			>
 			<span class="font-bold text-xl text-[#336791]" title="SQL">SQL</span
 			>

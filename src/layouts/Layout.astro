@@ -4,6 +4,7 @@ import { CommandMenu } from "../components/CommandMenu";
 import ThemeToggle from "../components/ThemeToggle";
 import { ClientRouter } from "astro:transitions";
 import CopyCode from "../components/CopyCode.astro";
+import { SITE } from "../site.config";
 
 interface Props {
     title: string;
@@ -15,7 +16,7 @@ interface Props {
 
 const {
     title,
-    description = "International High Schooler, Builder, Researcher.",
+    description = SITE.description,
     image = "/og-default.png",
     type = "website",
     publishDate,
@@ -34,16 +35,16 @@ const schema =
               datePublished: publishDate?.toISOString(),
               author: {
                   "@type": "Person",
-                  name: "Noah Qin",
+                  name: SITE.name,
                   url: Astro.site,
               },
           }
         : {
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Noah Qin",
+              name: SITE.name,
               url: Astro.site,
-              sameAs: ["https://github.com/imnotnoahhh"],
+              sameAs: [SITE.github],
               jobTitle: "Student & Developer",
           };
 ---
@@ -60,7 +61,7 @@ const schema =
         <meta name="generator" content={Astro.generator} />
         <!--
 Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={type} />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -152,6 +153,11 @@ Preload Fonts (Inter & JetBrains Mono) -->
                         >Writing</a
                     >
                     <a
+                        href="/archive"
+                        class="hover:text-[var(--color-text-main)] transition-colors"
+                        >Archive</a
+                    >
+                    <a
                         href="/about"
                         class="hover:text-[var(--color-text-main)] transition-colors"
                         >About</a
@@ -193,7 +199,7 @@ Preload Fonts (Inter & JetBrains Mono) -->
                 class="flex flex-col md:flex-row justify-between items-center gap-4"
             >
                 <p>
-                    &copy; {new Date().getFullYear()} Noah Qin.
+                    &copy; {new Date().getFullYear()} {SITE.name}.
                 </p>
                 <div class="flex gap-4">
                     <a
@@ -202,7 +208,7 @@ Preload Fonts (Inter & JetBrains Mono) -->
                         >RSS</a
                     >
                     <a
-                        href="https://github.com/imnotnoahhh"
+                        href={SITE.github}
                         target="_blank"
                         class="hover:text-[var(--color-text-main)] transition-colors"
                         >GitHub</a

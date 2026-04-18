@@ -1,6 +1,30 @@
 ---
 const events = [
   {
+    year: "2026 (Apr)",
+    title: "SSC 2026 Result",
+    description: "CurveStudio was not selected for the Swift Student Challenge. Reflected on problem selection vs. execution — wrote about the experience.",
+    type: "milestone"
+  },
+  {
+    year: "2026 (Mar)",
+    title: "Freelance Development",
+    description: "Started taking freelance development commissions. First experience having clients pay for my code — learned about communication and delivery.",
+    type: "milestone"
+  },
+  {
+    year: "2026 (Mar)",
+    title: "MoleUI",
+    description: "Built a native macOS GUI for tw93/Mole (a system cleaning CLI tool) using SwiftUI. Contributing to open source.",
+    type: "app"
+  },
+  {
+    year: "2026 (Feb–Apr)",
+    title: "Vex — Version Manager",
+    description: "Built a multi-language version manager for macOS in Rust. 19 releases in 6 weeks, supporting Node.js, Go, Java, Rust, and Python.",
+    type: "app"
+  },
+  {
     year: "2026 (Feb)",
     title: "EUSIPCO Submission",
     description: "Submitted paper 'Rethinking Data Augmentation for Small-Sample Learning' to EUSIPCO 2026. (Paper ID: 1089)",
@@ -59,7 +83,7 @@ const events = [
 
 <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[var(--color-border)] before:to-transparent">
   {events.map((event) => (
-    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
       
       <!-- Icon -->
       <div class="flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border)] bg-[var(--color-card)] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-[var(--color-text-muted)]">

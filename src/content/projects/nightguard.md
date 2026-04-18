@@ -1,7 +1,7 @@
 ---
 title: "NightGuard: Sleep & Habits"
 description: "An iOS application designed to help users build better sleep habits through tracking and analytics."
-publishDate: "2024-01-15"
+publishDate: "2025-11-28"
 tags: ["iOS", "SwiftUI", "HealthKit", "Productivity"]
 type: "app"
 stats: "Verify on AppStore"
@@ -10,7 +10,7 @@ link: "https://apps.apple.com/us/app/nightguard-sleep-habits/id6754812386"
 
 # NightGuard: Sleep & Habits
 
-> **2025 Updates**: Verified 50+ downloads. Focus on Sleep Hygiene.ctive users.
+> **2025 Updates**: Verified 50+ downloads. Focus on Sleep Hygiene. Active users.
 
 **NightGuard** is a native iOS application engineered to help users reconstruct their sleep hygiene through data-driven habit formation. Unlike passive trackers, it actively intervenes in the pre-sleep routine using a "Guard" mechanism.
 

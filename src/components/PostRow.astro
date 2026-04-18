@@ -25,6 +25,18 @@ const { post } = Astro.props;
             {post.data.description}
         </p>
 
+        {
+            post.data.tags && post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                    {post.data.tags.map((tag) => (
+                        <span class="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
+            )
+        }
+
         <div
             class="pt-2 text-sm text-indigo-600 dark:text-indigo-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
         >

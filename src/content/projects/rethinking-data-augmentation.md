@@ -2,10 +2,9 @@
 title: "Rethinking Data Augmentation for Small-Sample Learning: A Stability-Aware Search"
 description: "Submitted to EUSIPCO 2026. A stability-aware search pipeline for optimizing data augmentation in small-sample learning."
 publishDate: "2026-02-03"
-tags: ["AI", "Computer Vision", "Small-Sample Learning", "EUSIPCO 2026"]
+tags: ["AI", "Computer Vision", "Small-Sample Learning", "Publication"]
 type: "research"
 stats: "Under Review"
-link: "https://github.com/imnotnoahhh/Rethinking-Augmentation"
 github: "https://github.com/imnotnoahhh/Rethinking-Augmentation"
 ---
 
@@ -20,7 +19,7 @@ github: "https://github.com/imnotnoahhh/Rethinking-Augmentation"
 ## Abstract
 In the context of **Few-Shot Learning** (specifically limited to ~100 samples per class), this research aims to utilize a systematic **Pipeline** to discover the **optimal combination of foundational data augmentation operations**. The objective is to verify that a superimposed strategy (multi-op) significantly enhances model accuracy and robustness compared to single-operation baselines.
 
-### key Innovations
+### Key Innovations
 
 *   **Stability-Aware Search**: A novel three-stage pipeline initialized based on "Human Priors" restricts the search space to avoid overfitting.
 *   **Multi-Op Superposition**: Verifying that rational combinations of operations outperform single operations.

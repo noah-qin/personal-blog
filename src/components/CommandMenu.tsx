@@ -87,6 +87,12 @@ export const CommandMenu = () => {
                             >
                                 About
                             </Command.Item>
+                            <Command.Item
+                                onSelect={() => runCommand(() => window.location.href = "/archive")}
+                                className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
+                            >
+                                Archive
+                            </Command.Item>
                         </Command.Group>
                         <Command.Group heading="Socials" className="text-xs font-medium text-[var(--color-text-muted)] mb-1 px-2 mt-2">
                             <Command.Item
@@ -100,12 +106,6 @@ export const CommandMenu = () => {
                                 className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
                             >
                                 Email
-                            </Command.Item>
-                            <Command.Item
-                                onSelect={() => runCommand(() => window.open("/resume.pdf", "_blank"))}
-                                className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
-                            >
-                                Resume
                             </Command.Item>
                         </Command.Group>
                     </div>

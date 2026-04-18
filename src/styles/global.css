@@ -35,8 +35,6 @@
 html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
-    background-color: var(--color-bg);
-    color: var(--color-text-main);
 }
 
 body {
@@ -45,7 +43,6 @@ body {
     background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
     background-size: 24px 24px;
     background-attachment: fixed;
-    @apply antialiased transition-colors duration-300;
 }
 
 /* Custom Scrollbar for Geeky Vibe */

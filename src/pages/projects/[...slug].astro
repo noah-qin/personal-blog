@@ -28,10 +28,12 @@ const { Content } = await render(project);
                     class={`px-3 py-1 rounded-full text-xs font-medium border ${
                         project.data.type === "app"
                             ? "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20"
-                            : "bg-purple-50 text-purple-600 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20"
+                            : project.data.type === "research"
+                              ? "bg-purple-50 text-purple-600 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20"
+                              : "bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20"
                     }`}
                 >
-                    {project.data.type === "app" ? "iOS App" : "Research"}
+                    {project.data.type === "app" ? "iOS App" : project.data.type === "research" ? "Research" : "Project"}
                 </span>
                 {
                     project.data.stats && (
@@ -89,7 +91,7 @@ const { Content } = await render(project);
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="lucide lucide-external-link"
+                                class=""
                             >
                                 <>
                                     <path d="M15 3h6v6" />

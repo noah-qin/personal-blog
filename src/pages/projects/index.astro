@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
+import { SITE } from "../../site.config";
 
 const allProjects = await getCollection("projects");
 const sortedProjects = allProjects.sort(
@@ -12,7 +13,7 @@ const sortedProjects = allProjects.sort(
 // but for now we list all with a nice badge.
 ---
 
-<Layout title="Projects | Noah Qin">
+<Layout title={`Projects | ${SITE.name}`}>
     <div class="space-y-8">
         <div>
             <h1
