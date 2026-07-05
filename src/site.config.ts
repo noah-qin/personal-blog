@@ -3,6 +3,6 @@ export const SITE = {
     title: "Noah Qin",
     description: "International High Schooler, Builder, Researcher.",
     url: "https://noahnote.com",
-    github: "https://github.com/imnotnoahhh",
-    email: "blog@noahnote.com",
+    github: "https://github.com/noah-qin",
+    email: "hi@noahqin.dev",
 } as const;
