@@ -8,6 +8,9 @@ import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export function remarkReadingTime() {
   return function (tree, { data }) {
@@ -16,6 +19,33 @@ export function remarkReadingTime() {
     // readingTime.text will give us minutes read as a friendly string,
     // i.e. "3 min read"
     data.astro.frontmatter.minutesRead = readingTime.text;
+  };
+}
+
+// Astro's CSP always emits hashes for style-src, and per the CSP spec any
+// hash in a directive makes 'unsafe-inline' ignored. But ClientRouter and
+// cmdk apply style attributes at runtime, which hashes can never cover
+// (Safari enforces this and blocks them). So after the build we swap the
+// style-src hash list for 'unsafe-inline', keeping script-src fully hashed.
+function relaxStyleCsp() {
+  return {
+    name: 'relax-style-csp',
+    hooks: {
+      'astro:build:done': async ({ dir }) => {
+        const root = fileURLToPath(dir);
+        const files = await readdir(root, { recursive: true });
+        for (const file of files) {
+          if (!file.endsWith('.html')) continue;
+          const path = join(root, file);
+          const html = await readFile(path, 'utf8');
+          const patched = html.replace(
+            /(<meta http-equiv="content-security-policy" content="[^"]*)style-src[^;"]*/i,
+            `$1style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
+          );
+          if (patched !== html) await writeFile(path, patched);
+        }
+      },
+    },
   };
 }
 
@@ -54,7 +84,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), relaxStyleCsp()],
   markdown: {
     processor: unified({
       remarkPlugins: [remarkReadingTime],
