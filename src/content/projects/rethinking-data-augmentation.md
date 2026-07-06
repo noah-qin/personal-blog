@@ -1,16 +1,16 @@
 ---
 title: "Rethinking Data Augmentation for Small-Sample Learning: A Stability-Aware Search"
-description: "Submitted to EUSIPCO 2026. A stability-aware search pipeline for optimizing data augmentation in small-sample learning."
+description: "A stability-aware search pipeline for optimizing data augmentation in small-sample learning, submitted to EUSIPCO 2026."
 publishDate: "2026-02-03"
 tags: ["AI", "Computer Vision", "Small-Sample Learning", "Publication"]
 type: "research"
-stats: "Under Review"
+stats: "Not Accepted"
 github: "https://github.com/noah-qin/Rethinking-Augmentation"
 ---
 
-# Submission Details
+# Submission Outcome
 
-> **Update (Feb 2026):** This paper has been submitted to **EUSIPCO 2026** (34th European Signal Processing Conference).
+> **Update (May 2026):** This paper was not accepted by **EUSIPCO 2026**. The result was disappointing, but the submission exposed areas where the methodology and experimental validation can be strengthened. I plan to carry those lessons into future research.
 
 *   **Paper ID**: 1089
 *   **Track 1**: VIP - Visual Information Processing (Signal processing for computer vision)
@@ -28,8 +28,8 @@ In the context of **Few-Shot Learning** (specifically limited to ~100 samples pe
 ### Key Dates (EUSIPCO 2026)
 
 *   **Submission Date**: Feb 03, 2026 (Submitted)
-*   **Notification of Acceptance**: May 12, 2026 (Expected)
-*   **Camera Ready / Registration**: Jun 02, 2026
+*   **Decision**: May 12, 2026 (Not accepted)
+*   **Camera Ready / Registration**: Not applicable
 
 ### Methodology
 
