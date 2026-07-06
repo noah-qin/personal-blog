@@ -4,15 +4,16 @@ description: "A day at Cafe Cursor Beijing reminded me that the most valuable pa
 publishDate: "2026-07-04T18:30:00"
 tags: ["AI", "Community", "Event", "Programming"]
 image: "/images/cafe-cursor-beijing-room.jpg"
+thumbnail: "/images/thumbnails/cafe-cursor-beijing-room.webp"
 ---
 
 On July 4, I spent the day at **Cafe Cursor Beijing**. I went expecting to talk about AI tools. I left thinking more about the people using them.
 
-![Developers building together at Cafe Cursor Beijing](/images/cafe-cursor-beijing-room.jpg)
+<img src="/images/cafe-cursor-beijing-room.webp" alt="Developers building together at Cafe Cursor Beijing" loading="lazy" decoding="async" />
 
 The event took over a bright cafe and filled it with laptops, half-finished products, and developers who were eager to compare notes. Even the drinks menu was written like an API response: the server was Beijing, the service was Cafe Cursor, and the model was Composer 2.5.
 
-![An API-inspired drinks menu at Cafe Cursor Beijing](/images/cafe-cursor-beijing-menu.jpg)
+<img src="/images/cafe-cursor-beijing-menu.webp" alt="An API-inspired drinks menu at Cafe Cursor Beijing" loading="lazy" decoding="async" />
 
 It was playful, but it captured the atmosphere well. Everyone had arrived with the same broad interest in AI, yet no two people were using it in quite the same way.
 
@@ -34,7 +35,7 @@ AI can shorten the distance between an idea and a prototype. It can remove repet
 
 The interesting part was not that everyone had access to the same tool. It was that everyone brought a different set of experiences, priorities, and questions to it.
 
-![Cursor stickers being arranged during the event](/images/cafe-cursor-beijing-stickers.jpg)
+<img src="/images/cafe-cursor-beijing-stickers.webp" alt="Cursor stickers being arranged during the event" loading="lazy" decoding="async" />
 
 ## Why the Room Mattered
 
@@ -46,6 +47,6 @@ A community is not created by putting people into a group chat. It is created th
 
 That was the best part of Cafe Cursor Beijing. The AI brought us into the room, but the people made the day worth remembering.
 
-![The cafe's resident cat beside a developer's laptop](/images/cafe-cursor-beijing-cat.jpg)
+<img src="/images/cafe-cursor-beijing-cat.webp" alt="The cafe's resident cat beside a developer's laptop" loading="lazy" decoding="async" />
 
 The cat, admittedly, also helped.

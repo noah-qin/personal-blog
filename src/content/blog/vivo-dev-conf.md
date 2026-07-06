@@ -4,9 +4,10 @@ description: "Witnessing the intersection of BlueLM AI and humanistic technology
 publishDate: "2025-10-10T14:30:00"
 tags: ["Event", "AI", "Accessibility"]
 image: "/images/vivo-conf-1.jpg"
+thumbnail: "/images/thumbnails/vivo-conf-1.webp"
 ---
 
-![Vivo Developer Conference Stage](/images/vivo-conf-1.jpg)
+<img src="/images/vivo-conf-1.webp" alt="Vivo Developer Conference Stage" loading="lazy" decoding="async" />
 
 On October 10, 2025, I stepped out of the classroom and into the **Vivo Developer Conference (VDC)**. It was my first time attending a major industry event not as a student spectator, but as an active iOS developer.
 
@@ -25,7 +26,7 @@ Vivo introduced two feature matrices that bridge the gap for the hearing and vis
 *   **vivo Heard**: For hearing-impaired users, the phone can now separate speakers in a chaotic multi-person conversation and identify key environmental sounds (like a doorbell or kettle) through vibration alerts.
 *   **vivo Seen**: Using "Smart Memory" and "Environment Q&A," the phone becomes an eye. It describes the environment—friends' faces, surroundings—in text/voice, helping visually impaired users explore the world with dignity.
 
-![Event Atmosphere](/images/vivo-conf-2.jpg)
+<img src="/images/vivo-conf-2.webp" alt="Event Atmosphere" loading="lazy" decoding="async" />
 
 ## My Takeaway
 

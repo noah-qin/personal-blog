@@ -4,15 +4,16 @@ description: "At AWS Summit China 2026, a Snowflake demo changed how I think abo
 publishDate: "2026-06-23T18:00:00"
 tags: ["AI", "Cloud", "Data", "Event"]
 image: "/images/aws-summit-china-entrance.jpg"
+thumbnail: "/images/thumbnails/aws-summit-china-entrance.webp"
 ---
 
 On June 23, I attended the first day of **AWS Summit China 2026** at the Shanghai World Expo Center.
 
-![The entrance to AWS Summit China 2026](/images/aws-summit-china-entrance.jpg)
+<img src="/images/aws-summit-china-entrance.webp" alt="The entrance to AWS Summit China 2026" loading="lazy" decoding="async" />
 
 The theme was impossible to miss: **Agentic Now, Go Build**. Across the expo floor, companies were demonstrating agents, models, platforms, infrastructure, and the systems required to move AI from an experiment into production.
 
-![My AWS Summit China attendee badge](/images/aws-summit-china-badge.jpg)
+<img src="/images/aws-summit-china-badge.webp" alt="My AWS Summit China attendee badge" loading="lazy" decoding="async" />
 
 I expected the most memorable technology to be a model. Instead, it was Snowflake.
 
@@ -28,7 +29,7 @@ The Snowflake demonstration showed how voice, images, and text could be handled 
 
 What impressed me was not merely that AI could understand several media formats. It was that these formats could become part of the same analytical system.
 
-![The crowded Agentic AI expo floor](/images/aws-summit-china-expo-floor.jpg)
+<img src="/images/aws-summit-china-expo-floor.webp" alt="The crowded Agentic AI expo floor" loading="lazy" decoding="async" />
 
 ## The Model Only Sees the Context We Build
 
@@ -44,13 +45,13 @@ That is a less dramatic problem than announcing a new model, but it may be the m
 
 The rest of the summit reinforced the same point. The expo was organized around more than models: there were sections for data and knowledge, agent platforms, business applications, infrastructure, security, and observability.
 
-![AWS Summit China at the Shanghai World Expo Center](/images/aws-summit-china-venue.jpg)
+<img src="/images/aws-summit-china-venue.webp" alt="AWS Summit China at the Shanghai World Expo Center" loading="lazy" decoding="async" />
 
 Together, they represented the difference between an AI demo and an AI product. A demo needs to work once. A product needs to work repeatedly, on real data, for real users, while remaining understandable and dependable.
 
 As I build products for [Cobay](/projects/cobay), that distinction is useful. Before adding an agent or another AI feature, I need to ask more basic questions: What information does the product create? Where does it live? How is it connected? What context would an intelligent system actually need to be helpful?
 
-![The main expo installation at AWS Summit China](/images/aws-summit-china-expo.jpg)
+<img src="/images/aws-summit-china-expo.webp" alt="The main expo installation at AWS Summit China" loading="lazy" decoding="async" />
 
 I walked into AWS Summit thinking about models. I left thinking about data.
 
