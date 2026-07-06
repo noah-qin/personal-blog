@@ -3,8 +3,6 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
 
 import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
@@ -32,8 +30,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkReadingTime],
-      rehypePlugins: [rehypeKatex],
+      remarkPlugins: [remarkReadingTime],
     }),
   }
 });

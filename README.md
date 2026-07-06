@@ -8,7 +8,6 @@ Personal website and blog of Noah Qin — projects, essays, and an about/timelin
 - [React 19](https://react.dev) — interactive islands (command menu, theme toggle, comments)
 - [Tailwind CSS 4](https://tailwindcss.com) — styling, with `@tailwindcss/typography` for prose
 - [Giscus](https://giscus.app) — comments backed by GitHub Discussions
-- KaTeX (via `remark-math` + `rehype-katex`) — math rendering in posts
 
 ## Project Structure
 
