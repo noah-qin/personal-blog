@@ -7,6 +7,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
 
@@ -30,7 +31,9 @@ export default defineConfig({
 
   integrations: [react(), sitemap()],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime],
-    rehypePlugins: [rehypeKatex],
+    processor: unified({
+      remarkPlugins: [remarkMath, remarkReadingTime],
+      rehypePlugins: [rehypeKatex],
+    }),
   }
 });

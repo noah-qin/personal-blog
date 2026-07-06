@@ -5,7 +5,7 @@ publishDate: "2026-02-27"
 tags: ["Rust", "DevTools", "Open Source", "CLI"]
 type: "other"
 stats: "19 Releases"
-github: "https://github.com/imnotnoahhh/vex"
+github: "https://github.com/noah-qin/vex"
 ---
 
 # Vex
@@ -36,8 +36,8 @@ Every language has its own version manager — nvm, rustup, sdkman, pyenv, goenv
 *   TUI dashboard (`vex tui`)
 *   Python venv integration
 *   Self-update (`vex self-update`)
-*   Official GitHub Action (`uses: imnotnoahhh/vex@v1`)
-*   Homebrew tap (`brew install imnotnoahhh/homebrew-vex/vex`)
+*   Official GitHub Action (`uses: noah-qin/vex@v1`)
+*   Homebrew tap (`brew install noah-qin/homebrew-vex/vex`)
 
 ## Development Timeline
 

@@ -1,5 +1,6 @@
 import { Command } from 'cmdk';
 import { useEffect, useState } from 'react';
+import { SITE } from '../site.config';
 
 export const CommandMenu = () => {
     const [open, setOpen] = useState(false);
@@ -96,13 +97,13 @@ export const CommandMenu = () => {
                         </Command.Group>
                         <Command.Group heading="Socials" className="text-xs font-medium text-[var(--color-text-muted)] mb-1 px-2 mt-2">
                             <Command.Item
-                                onSelect={() => runCommand(() => window.open("https://github.com/noah-qin", "_blank"))}
+                                onSelect={() => runCommand(() => window.open(SITE.github, "_blank"))}
                                 className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
                             >
                                 GitHub
                             </Command.Item>
                             <Command.Item
-                                onSelect={() => runCommand(() => window.location.href = "mailto:hi@noahqin.dev")}
+                                onSelect={() => runCommand(() => window.location.href = `mailto:${SITE.email}`)}
                                 className="flex items-center px-2 py-2 text-sm text-[var(--color-text-main)] rounded-md hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
                             >
                                 Email
@@ -114,5 +115,3 @@ export const CommandMenu = () => {
         </>
     );
 };
-
-

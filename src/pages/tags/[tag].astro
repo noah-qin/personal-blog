@@ -3,31 +3,33 @@ import Layout from "../../layouts/Layout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import PostRow from "../../components/PostRow.astro";
 import { getCollection } from "astro:content";
+import { slugifyTag } from "../../lib/collections";
 
 export async function getStaticPaths() {
     const allProjects = await getCollection("projects");
     const allPosts = await getCollection("blog");
 
-    // Collect all unique tags
-    const tags = new Set<string>();
+    // Collect all unique tags, keyed by slug so URL routes stay ASCII-safe.
+    // The original tag text is kept for display.
+    const tagsBySlug = new Map<string, string>();
     allProjects.forEach((project) => {
-        project.data.tags?.forEach((tag) => tags.add(tag));
+        project.data.tags?.forEach((tag) => tagsBySlug.set(slugifyTag(tag), tag));
     });
     allPosts.forEach((post) => {
-        post.data.tags?.forEach((tag) => tags.add(tag));
+        post.data.tags?.forEach((tag) => tagsBySlug.set(slugifyTag(tag), tag));
     });
 
     // Generate paths
-    return Array.from(tags).map((tag) => {
+    return Array.from(tagsBySlug).map(([slug, tag]) => {
         const filteredProjects = allProjects.filter((project) =>
-            project.data.tags?.includes(tag),
+            project.data.tags?.some((t) => slugifyTag(t) === slug),
         );
         const filteredPosts = allPosts.filter((post) =>
-            post.data.tags?.includes(tag),
+            post.data.tags?.some((t) => slugifyTag(t) === slug),
         );
 
         return {
-            params: { tag },
+            params: { tag: slug },
             props: {
                 Tag: tag,
                 projects: filteredProjects,

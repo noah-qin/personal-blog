@@ -2,6 +2,7 @@
   "name": "code-personal-blog",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.5.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,23 +10,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/markdown-remark": "^7.2.1",
+    "@astrojs/react": "^6.0.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
     "@giscus/react": "^3.1.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.7",
+    "@tailwindcss/vite": "^4.3.2",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.6",
+    "astro": "^7.0.6",
     "cmdk": "^1.1.1",
     "mdast-util-to-string": "^4.0.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "reading-time": "^1.5.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0"
   }

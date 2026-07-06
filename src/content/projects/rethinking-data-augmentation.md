@@ -5,7 +5,7 @@ publishDate: "2026-02-03"
 tags: ["AI", "Computer Vision", "Small-Sample Learning", "Publication"]
 type: "research"
 stats: "Under Review"
-github: "https://github.com/imnotnoahhh/Rethinking-Augmentation"
+github: "https://github.com/noah-qin/Rethinking-Augmentation"
 ---
 
 # Submission Details

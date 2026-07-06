@@ -3,11 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import PostRow from "../../components/PostRow.astro";
 import { SITE } from "../../site.config";
+import { sortByPublishDate } from "../../lib/collections";
 
-const posts = await getCollection("blog");
-const sortedPosts = posts.sort(
-    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-);
+const sortedPosts = sortByPublishDate(await getCollection("blog"));
 ---
 
 <Layout title={`Writing | ${SITE.name}`}>

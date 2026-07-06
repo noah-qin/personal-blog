@@ -6,17 +6,14 @@ export default function ThemeToggle() {
 
     useEffect(() => {
         setMounted(true);
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "light" || savedTheme === "dark") {
-            setTheme(savedTheme);
-            document.documentElement.classList.toggle("dark", savedTheme === "dark");
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            setTheme("dark");
-            document.documentElement.classList.add("dark");
-        } else {
-            setTheme("light");
-            document.documentElement.classList.remove("dark");
-        }
+        // The inline script in Layout.astro already resolved the theme
+        // (localStorage / prefers-color-scheme) and set the class before
+        // hydration, so the <html> class is the source of truth here.
+        setTheme(
+            document.documentElement.classList.contains("dark")
+                ? "dark"
+                : "light",
+        );
     }, []);
 
     const toggleTheme = () => {

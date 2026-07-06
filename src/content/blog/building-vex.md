@@ -58,4 +58,4 @@ Ship early. v0.1.0 was rough, but it got me real feedback. Waiting for perfect m
 
 And security isn't a feature you bolt on at the end. I did TOCTOU protection and path traversal guards before v1.0 because a version manager touches the filesystem and PATH directly — if that's not secure, your entire development environment isn't secure.
 
-Vex is open source: [github.com/imnotnoahhh/vex](https://github.com/imnotnoahhh/vex). Try it, open issues, contribute.
+Vex is open source: [github.com/noah-qin/vex](https://github.com/noah-qin/vex). Try it, open issues, contribute.

@@ -1,0 +1,29 @@
+---
+/**
+ * Pill badge showing a project's type (iOS App / Research / Project).
+ * Single source of truth for the type → color/label mapping used by
+ * ProjectCard and the project detail page.
+ */
+interface Props {
+    type: "app" | "research" | "other";
+}
+
+const { type } = Astro.props;
+
+const styles = {
+    app: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20",
+    research:
+        "bg-purple-50 text-purple-600 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20",
+    other: "bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20",
+} as const;
+
+const labels = {
+    app: "iOS App",
+    research: "Research",
+    other: "Project",
+} as const;
+---
+
+<span class={`px-3 py-1 rounded-full text-xs font-medium border ${styles[type]}`}>
+    {labels[type]}
+</span>
