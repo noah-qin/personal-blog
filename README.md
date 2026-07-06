@@ -1,10 +1,10 @@
-# noahnote.com
+# noahqin.dev
 
-Personal website and blog of Noah Qin — projects, essays, and an about/timeline page. Live at [noahnote.com](https://noahnote.com).
+Personal website and blog of Noah Qin — projects, essays, and an about/timeline page. Live at [noahqin.dev](https://noahqin.dev).
 
 ## Tech Stack
 
-- [Astro 5](https://astro.build) — static site generation, content collections, view transitions
+- [Astro 7](https://astro.build) — static site generation, content collections, view transitions
 - [React 19](https://react.dev) — interactive islands (command menu, theme toggle, comments)
 - [Tailwind CSS 4](https://tailwindcss.com) — styling, with `@tailwindcss/typography` for prose
 - [Giscus](https://giscus.app) — comments backed by GitHub Discussions
