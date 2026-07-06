@@ -31,14 +31,14 @@ export const CommandMenu = () => {
                 className="fixed bottom-4 right-4 z-50 p-3 bg-[var(--color-primary)] text-[var(--color-primary-fg)] rounded-full shadow-lg hover:opacity-90 transition-all md:hidden"
                 aria-label="Open Command Menu"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
 
             <Command.Dialog
                 open={open}
                 onOpenChange={setOpen}
                 label="Global Command Menu"
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-full bg-[var(--color-card)] glass-effect rounded-xl shadow-2xl border border-[var(--color-border)] p-2 z-50 overflow-hidden"
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-[calc(100%-2rem)] bg-[var(--color-card)] glass-effect rounded-xl shadow-2xl border border-[var(--color-border)] p-2 z-50 overflow-hidden"
             >
                 <div className="flex items-center border-b border-[var(--color-border)] px-3 pb-2 pt-1">
                     <svg
