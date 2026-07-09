@@ -4,5 +4,5 @@ export const SITE = {
     description: "International High Schooler, Builder, Researcher.",
     url: "https://noahqin.dev",
     github: "https://github.com/noah-qin",
-    email: "hi@noahqin.dev",
+    email: "noah@noahqin.dev",
 } as const;
