@@ -2,52 +2,71 @@
 
 Personal website and blog of Noah Qin — projects, essays, and an about/timeline page. Live at [noahqin.dev](https://noahqin.dev).
 
-## Tech Stack
+## Tech stack
 
-- [Astro 7](https://astro.build) — static site generation, content collections, view transitions
-- [React 19](https://react.dev) — interactive islands (command menu, theme toggle, comments)
-- [Tailwind CSS 4](https://tailwindcss.com) — styling, with `@tailwindcss/typography` for prose
-- [Giscus](https://giscus.app) — comments backed by GitHub Discussions
+- [Deno](https://deno.com/) — runtime, tasks, formatting, linting, and type checking
+- [Lume](https://lume.land/) — Deno-native static site generator
+- Vento and Markdown — templates and content
+- Native CSS and browser JavaScript — design and interactions, with no client framework or bundler
+- [Giscus](https://giscus.app/) — native comments embed backed by GitHub Discussions
 
-## Project Structure
-
-```text
-/
-├── public/                  # Static assets (favicon, OG image, robots.txt, RSS stylesheet)
-├── src/
-│   ├── components/          # Astro + React components
-│   │   ├── CommandMenu.tsx  # ⌘K command palette (cmdk)
-│   │   ├── ThemeToggle.tsx  # Light/dark switch
-│   │   └── GiscusWidget.tsx # Comments, follows the active theme
-│   ├── content/
-│   │   ├── blog/            # Blog posts (Markdown)
-│   │   ├── projects/        # Project pages (Markdown)
-│   │   └── config.ts        # Frontmatter schemas (zod)
-│   ├── layouts/Layout.astro # Shared shell: head/SEO/JSON-LD, header, footer
-│   ├── lib/collections.ts   # Shared content-collection helpers
-│   ├── pages/               # Routes (index, blog, projects, tags, archive, about, rss)
-│   └── site.config.ts       # Site metadata: name, URL, GitHub, email
-└── astro.config.mjs         # Integrations, markdown plugins, reading-time plugin
-```
+This repository has no `package.json`, npm commands, or `node_modules`. Lume and its official plugins are loaded by Deno from a pinned Lume release. Some internal Lume implementation packages are recorded transitively in `deno.lock`; they are resolved and executed by Deno and do not require Node.js or npm tooling.
 
 ## Commands
 
-| Command        | Action                                       |
-| :------------- | :------------------------------------------- |
-| `pnpm install` | Install dependencies                         |
-| `pnpm dev`     | Start dev server at `localhost:4321`         |
-| `pnpm build`   | Build the production site to `./dist/`       |
-| `pnpm preview` | Preview the production build locally         |
+| Command           | Action                                                                |
+| :---------------- | :-------------------------------------------------------------------- |
+| `deno task serve` | Build and serve locally at `http://localhost:3000` with file watching |
+| `deno task build` | Build the production site into `./_site/`                             |
+| `deno task fmt`   | Format source files                                                   |
+| `deno task lint`  | Run the Deno linter                                                   |
+| `deno task check` | Type-check configuration and site scripts                             |
 
-## Writing Content
+Before committing, run:
 
-Add a Markdown file under `src/content/blog/` or `src/content/projects/`. Frontmatter is validated by the schemas in `src/content/config.ts`:
+```sh
+deno fmt
+deno lint
+deno task check
+deno task build
+```
 
-- **Blog**: `title`, `description`, `publishDate`, optional `updatedDate`, `tags`, `image`
-- **Projects**: `title`, `description`, `publishDate`, `tags`, `type` (`app` | `research` | `other`), optional `image`, `link`, `github`, `stats`
+## Project structure
 
-Reading time is computed at build time by the `remarkReadingTime` plugin in `astro.config.mjs`.
+```text
+.
+├── _config.ts                 # Lume config, feed, sitemap, and URL checks
+├── deno.json                  # Deno imports and tasks
+├── src/
+│   ├── _data.yml              # Shared site metadata
+│   ├── _includes/             # Vento layouts and components
+│   ├── assets/                # Native CSS and browser JavaScript
+│   ├── content/blog/          # Blog posts in Markdown
+│   ├── content/projects/      # Project pages in Markdown
+│   ├── images/                # Static article images
+│   ├── tags.page.ts           # Tag page generator
+│   └── *.vto                  # Home, lists, archive, about, and 404
+├── vercel.json                # Static output and security headers
+└── _site/                     # Generated output (ignored)
+```
+
+## Writing content
+
+Add Markdown under `src/content/blog/` or `src/content/projects/`. Every content file declares an explicit `url` so published links cannot change accidentally.
+
+Blog frontmatter uses `title`, `description`, `publishDate`, `url`, optional `tags`, `image`, and `thumbnail`. Project frontmatter additionally uses `projectType` (`app`, `research`, or `other`) and optional `link`, `github`, and `stats`.
+
+Reading time, tag pages, archive grouping, RSS, and the sitemap are generated during the Lume build. The build fails when an internal page or asset link is broken.
+
+## Interactions and CSP
+
+- Theme selection is stored under the `theme` local-storage key and follows the system preference initially.
+- The command menu supports `⌘K`/`Ctrl+K`, filtering, arrow keys, Enter, and Escape.
+- Code blocks receive a native clipboard button.
+- Giscus uses its native embed and follows the active site theme.
+
+Browser code is served from `/assets/`; there is no inline executable JavaScript. JSON-LD hashes in `vercel.json` are fixed CSP hashes and must be regenerated if structured-data content changes.
 
 ## Deployment
 
-Fully static output — deployed on [Vercel](https://vercel.com). Any push to `main` triggers a build (`pnpm build`). Site URL and metadata live in `src/site.config.ts` and `astro.config.mjs` (`site`).
+Vercel runs `deno task build` and publishes `_site`. Do not add an install command or Node.js package manager. `vercel.json` owns the static security headers and CSP.
