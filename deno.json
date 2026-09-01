@@ -1,0 +1,24 @@
+{
+  "imports": {
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/"
+  },
+  "tasks": {
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume --serve",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "check": "deno check _config.ts src/**/*.ts src/assets/*.js"
+  },
+  "nodeModulesDir": "none",
+  "fmt": {
+    "lineWidth": 100,
+    "semiColons": true,
+    "proseWrap": "preserve",
+    "exclude": ["_site", "AGENTS.md"]
+  },
+  "lint": {
+    "exclude": ["_site"]
+  },
+  "exclude": ["_site"]
+}
