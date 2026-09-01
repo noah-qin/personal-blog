@@ -13,7 +13,7 @@
 | `/rss.xml`           | `/rss.xml`           | Lume feed plugin    |
 | `/sitemap-index.xml` | `/sitemap-index.xml` | Lume sitemap plugin |
 
-All pretty URLs are emitted as `index.html`; Vercel serves both the former no-trailing-slash form and the canonical trailing-slash form.
+All pretty URLs are emitted as `index.html`. At migration time the site was still hosted on Vercel, which served both the former no-trailing-slash form and the canonical trailing-slash form; this is a historical note about that prior host, not the current Deno Deploy setup.
 
 ### Blog posts (11/11)
 
