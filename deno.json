@@ -6,9 +6,17 @@
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",
     "serve": "deno task lume --serve",
+    "start": "deno run --allow-net --allow-read serve.ts",
     "fmt": "deno fmt",
     "lint": "deno lint",
-    "check": "deno check _config.ts src/**/*.ts src/assets/*.js"
+    "check": "deno check _config.ts serve.ts src/**/*.ts src/assets/*.js"
+  },
+  "deploy": {
+    "build": "deno task build",
+    "runtime": {
+      "type": "dynamic",
+      "entrypoint": "./serve.ts"
+    }
   },
   "nodeModulesDir": "none",
   "fmt": {

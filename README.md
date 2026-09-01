@@ -18,6 +18,7 @@ This repository has no `package.json`, npm commands, or `node_modules`. Lume and
 | :---------------- | :-------------------------------------------------------------------- |
 | `deno task serve` | Build and serve locally at `http://localhost:3000` with file watching |
 | `deno task build` | Build the production site into `./_site/`                             |
+| `deno task start` | Serve the production build with the deployed security headers         |
 | `deno task fmt`   | Format source files                                                   |
 | `deno task lint`  | Run the Deno linter                                                   |
 | `deno task check` | Type-check configuration and site scripts                             |
@@ -37,6 +38,7 @@ deno task build
 .
 ├── _config.ts                 # Lume config, feed, sitemap, and URL checks
 ├── deno.json                  # Deno imports and tasks
+├── serve.ts                   # Lume production server and security headers
 ├── src/
 │   ├── _data.yml              # Shared site metadata
 │   ├── _includes/             # Vento layouts and components
@@ -46,7 +48,6 @@ deno task build
 │   ├── images/                # Static article images
 │   ├── tags.page.ts           # Tag page generator
 │   └── *.vto                  # Home, lists, archive, about, and 404
-├── vercel.json                # Static output and security headers
 └── _site/                     # Generated output (ignored)
 ```
 
@@ -65,8 +66,8 @@ Reading time, tag pages, archive grouping, RSS, and the sitemap are generated du
 - Code blocks receive a native clipboard button.
 - Giscus uses its native embed and follows the active site theme.
 
-Browser code is served from `/assets/`; there is no inline executable JavaScript. JSON-LD hashes in `vercel.json` are fixed CSP hashes and must be regenerated if structured-data content changes.
+Browser code is served from `/assets/`; there is no inline executable JavaScript. JSON-LD hashes in `serve.ts` are fixed CSP hashes and must be regenerated if structured-data content changes.
 
 ## Deployment
 
-Vercel runs `deno task build` and publishes `_site`. Do not add an install command or Node.js package manager. `vercel.json` owns the static security headers and CSP.
+Deno Deploy runs `deno task build`, then starts the official Lume server from `serve.ts`. The server publishes `_site` and attaches the security headers and CSP to every response. The build and dynamic runtime configuration live in `deno.json`; no install command or Node.js package manager is used.
