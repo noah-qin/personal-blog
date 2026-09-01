@@ -2,6 +2,7 @@
 title: "The Database Booth I Remembered at an AI Summit"
 description: "At AWS Summit China 2026, a Snowflake demo changed how I think about multimodal customer data and production AI."
 publishDate: "2026-06-23T18:00:00"
+url: "/blog/aws-summit-china-2026/"
 tags: ["AI", "Cloud", "Data", "Event"]
 image: "/images/aws-summit-china-entrance.jpg"
 thumbnail: "/images/thumbnails/aws-summit-china-entrance.webp"

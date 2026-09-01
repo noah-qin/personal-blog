@@ -1,0 +1,12 @@
+---
+layout: layouts/base.vto
+---
+<article class="article project-detail">
+  <header class="article-header">
+    <div class="badges"><span class="badge badge-{{ projectType || type }}">{{ projectType === 'app' ? 'iOS App' : projectType === 'research' ? 'Research' : 'Project' }}</span>{{ if stats }}<span class="stat">{{ stats }}</span>{{ /if }}</div>
+    <h1>{{ title }}</h1><p>{{ description }}</p>
+    <div class="tags">{{ for tag of tags }}<a href="/tags/{{ tag |> slugify }}/">#{{ tag }}</a>{{ /for }}</div>
+    <div class="project-links">{{ if link }}<a class="primary-button" href="{{ link }}">{{ projectType === 'app' ? 'App Store' : projectType === 'research' ? 'View Paper' : 'Visit Website' }} ↗</a>{{ /if }}{{ if github }}<a class="secondary-button" href="{{ github }}">GitHub</a>{{ /if }}</div>
+  </header>
+  <div class="prose">{{ content |> safe }}</div>
+</article>

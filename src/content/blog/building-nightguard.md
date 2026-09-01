@@ -2,13 +2,13 @@
 title: "Building NightGuard: The Irony of Sleep"
 description: "How staying up late for 3 months helped me build an app to fix my sleep."
 publishDate: "2025-11-28T22:15:00"
+url: "/blog/building-nightguard/"
 tags: ["DevLog", "SwiftUI", "Product"]
-
 ---
 
 I built **NightGuard** for a selfish reason: I was tired.
 
-Like many, I relied on sleep trackers and iOS Screen Time to manage my rest. But they never felt cohesive. Screen Time was too easy to ignore, and sleep trackers were just passive observers. I wanted something that actively connected the two—forcing me to disconnect *before* bed while tracking the quality of my rest *during* it.
+Like many, I relied on sleep trackers and iOS Screen Time to manage my rest. But they never felt cohesive. Screen Time was too easy to ignore, and sleep trackers were just passive observers. I wanted something that actively connected the two—forcing me to disconnect _before_ bed while tracking the quality of my rest _during_ it.
 
 ## The Journey (July - November)
 
@@ -19,6 +19,7 @@ The goal was simple: combine **Sleep Tracking**, **App Blocking**, and **Habit C
 ### Learning by Doing
 
 This project was the definition of "Learning by Doing." I didn't verify a theory; I built a product.
+
 - **HealthKit** was complex.
 - **DeviceActivity API** (Screen Time) was notoriously undocumented.
 - **SwiftUI** animations required weeks of tweaking.

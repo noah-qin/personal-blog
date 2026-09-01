@@ -2,8 +2,9 @@
 title: "CurveStudio"
 description: "An interactive playground for exploring mathematical curves, designed for the Swift Student Challenge 2026."
 publishDate: "2026-02-08"
+url: "/projects/curve-studio/"
 tags: ["Swift", "SwiftUI", "Math", "Education", "Competition"]
-type: "app"
+projectType: "app"
 link: "https://developer.apple.com/swift-student-challenge/"
 stats: "Not Selected"
 ---
@@ -14,14 +15,14 @@ stats: "Not Selected"
 
 ## Key Features
 
-*   **Interactive Graphing**: Real-time rendering of mathematical functions with parameter sliders.
-*   **Calculus Visualization**: Step through derivatives and Riemann sum approximations visually.
-*   **Educational Focus**: Designed to help students understand how each parameter affects a function's behavior.
-*   **SwiftUI Native**: Built entirely with SwiftUI for a modern, responsive user interface.
+- **Interactive Graphing**: Real-time rendering of mathematical functions with parameter sliders.
+- **Calculus Visualization**: Step through derivatives and Riemann sum approximations visually.
+- **Educational Focus**: Designed to help students understand how each parameter affects a function's behavior.
+- **SwiftUI Native**: Built entirely with SwiftUI for a modern, responsive user interface.
 
 ## Timeline
 
-*   **Submitted**: February 8, 2026
-*   **Result**: Not selected (announced March 28, 2026)
+- **Submitted**: February 8, 2026
+- **Result**: Not selected (announced March 28, 2026)
 
-*See my [reflection on the SSC experience](/blog/ssc-reflection) for what I learned from this.*
+_See my [reflection on the SSC experience](/blog/ssc-reflection) for what I learned from this._

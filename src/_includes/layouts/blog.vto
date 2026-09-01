@@ -1,0 +1,12 @@
+---
+layout: layouts/base.vto
+---
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta"><time datetime="{{ new Date(publishDate).toISOString() }}">{{ new Date(publishDate).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'}) }}</time><span>•</span><span>{{ content |> readingTime }}</span></div>
+    <h1>{{ title }}</h1><p>{{ description }}</p>
+  </header>
+  <div class="prose">{{ content |> safe }}</div>
+  <div class="article-back"><a href="/blog">← Back to Essays</a></div>
+  <div class="comments"><script src="https://giscus.app/client.js" data-repo="noah-qin/personal-blog" data-repo-id="R_kgDOQusUUA" data-category="Announcements" data-category-id="DIC_kwDOQusUUM4C0O8G" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></div>
+</article>

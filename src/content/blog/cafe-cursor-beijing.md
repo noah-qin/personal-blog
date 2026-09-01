@@ -2,6 +2,7 @@
 title: "The Best Part of AI Coding Wasn't the AI"
 description: "A day at Cafe Cursor Beijing reminded me that the most valuable part of building with AI is still the people in the room."
 publishDate: "2026-07-04T18:30:00"
+url: "/blog/cafe-cursor-beijing/"
 tags: ["AI", "Community", "Event", "Programming"]
 image: "/images/cafe-cursor-beijing-room.jpg"
 thumbnail: "/images/thumbnails/cafe-cursor-beijing-room.webp"

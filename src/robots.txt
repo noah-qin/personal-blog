@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noahqin.dev/sitemap-index.xml

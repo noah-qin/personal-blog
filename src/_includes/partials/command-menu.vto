@@ -1,0 +1,10 @@
+<button id="mobile-search-button" class="mobile-search" aria-label="Open command menu">⌕</button>
+<dialog id="command-menu" aria-label="Global command menu">
+  <div class="command-search"><span aria-hidden="true">⌕</span><input id="command-input" placeholder="Search for projects, essays, or commands..." autocomplete="off"></div>
+  <div class="command-list" role="listbox">
+    <p>Navigation</p>
+    <a href="/" data-label="home">Home</a><a href="/projects" data-label="projects">Projects</a><a href="/blog" data-label="writing blog essays">Writing</a><a href="/about" data-label="about">About</a><a href="/archive" data-label="archive">Archive</a>
+    <p>Socials</p>
+    <a href="{{ site.github }}" data-label="github">GitHub</a><a href="mailto:{{ site.email }}" data-label="email contact">Email</a>
+  </div>
+</dialog>

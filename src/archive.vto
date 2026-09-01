@@ -1,0 +1,5 @@
+---
+title: Archive | Writing History
+url: /archive/
+---
+<header class="page-header"><p><a href="/">Home</a> / Archive</p><h1>Archive</h1><p>{{ search.pages('type=blog').length }} posts in total.</p></header><div class="archive">{{ for year of [2026, 2025] }}<section><h2>{{ year }}<span></span></h2><ul>{{ for post of search.pages('type=blog', 'publishDate=desc') }}{{ if new Date(post.publishDate).getFullYear() === year }}<li><a href="{{ post.url }}"><strong>{{ post.title }}</strong><time>{{ new Date(post.publishDate).toLocaleDateString('en-US', {month:'short', day:'numeric'}) }}</time></a></li>{{ /if }}{{ /for }}</ul></section>{{ /for }}</div>

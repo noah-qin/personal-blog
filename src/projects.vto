@@ -1,0 +1,5 @@
+---
+title: Projects | Noah Qin
+url: /projects/
+---
+<header class="page-header"><h1>Projects</h1><p>App Store apps, research papers, and open source experiments.</p></header><div class="card-grid">{{ for project of search.pages('type=project', 'publishDate=desc') }}{{ include "partials/project-card.vto" { project } }}{{ /for }}</div>

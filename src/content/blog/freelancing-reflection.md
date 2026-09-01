@@ -2,6 +2,7 @@
 title: "The First Time Someone Paid for My Code"
 description: "What freelancing taught me about validation, blind spots, and why communication is engineering."
 publishDate: "2026-03-20T10:00:00"
+url: "/blog/freelancing-reflection/"
 tags: ["Freelancing", "Growth", "Reflection"]
 ---
 

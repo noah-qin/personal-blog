@@ -2,6 +2,7 @@
 title: "The Illusion of Certainty"
 description: "After heavy use of AI coding assistants during development, I went digging into why they fail — and what I found changed how I work with them."
 publishDate: "2026-03-10T14:00:00"
+url: "/blog/ai-illusion-of-certainty/"
 tags: ["AI", "Opinion", "Programming"]
 ---
 

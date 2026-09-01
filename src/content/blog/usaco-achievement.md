@@ -2,6 +2,7 @@
 title: "USACO: From Bronze to Platinum"
 description: "How specific problems changed the way I think — binary search under adversarial conditions, decomposing coupled systems, and turning exponential problems into linear ones."
 publishDate: "2026-01-10T00:00:00"
+url: "/blog/usaco-achievement/"
 tags: ["Competition", "Programming", "Algorithms"]
 ---
 
@@ -11,7 +12,7 @@ That sentence is easy to write. The process wasn't. What I want to record here i
 
 ## Bronze: Binary Search Under Adversarial Conditions
 
-One problem gave me a resource exchange scenario: you have some amount of resource A and resource B, and you can convert B into A at a fixed rate. But you also receive an unknown number of extra resources — and the catch is, you don't control how they're split between A and B. The distribution could be anything. The question: how many extra resources do you need to *guarantee* you can hit a target amount of A, no matter how badly the split goes against you?
+One problem gave me a resource exchange scenario: you have some amount of resource A and resource B, and you can convert B into A at a fixed rate. But you also receive an unknown number of extra resources — and the catch is, you don't control how they're split between A and B. The distribution could be anything. The question: how many extra resources do you need to _guarantee_ you can hit a target amount of A, no matter how badly the split goes against you?
 
 The key word is "guarantee." This isn't an optimization problem. It's a worst-case problem. You have to assume the distribution is actively trying to screw you.
 

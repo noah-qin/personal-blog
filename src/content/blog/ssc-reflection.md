@@ -2,6 +2,7 @@
 title: "Swift Student Challenge — I Didn't Make It"
 description: "My SSC submission wasn't selected. Here's what I think went wrong, and what I'll do differently next time."
 publishDate: "2026-04-01T12:00:00"
+url: "/blog/ssc-reflection/"
 tags: ["Swift", "Reflection", "Competition"]
 ---
 

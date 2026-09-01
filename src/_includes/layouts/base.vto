@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ lang || 'en' }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="{{ description || site.description }}">
+    <link rel="canonical" href="{{ site.url }}{{ url }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/theme-init.js"></script>
+    <meta property="og:type" content="{{ ogType || 'website' }}">
+    <meta property="og:url" content="{{ site.url }}{{ url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description || site.description }}">
+    <meta property="og:image" content="{{ site.url }}{{ image || '/og-default.png' }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description || site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ image || '/og-default.png' }}">
+    <script type="application/ld+json">{{ JSON.stringify(ogType === 'article' ? {'@context':'https://schema.org','@type':'BlogPosting',headline:title,image:site.url + (image || '/og-default.png'),datePublished:new Date(publishDate).toISOString(),author:{'@type':'Person',name:site.name,url:site.url}} : {'@context':'https://schema.org','@type':'Person',name:site.name,url:site.url,sameAs:[site.github],jobTitle:'Student & Developer'}) |> safe }}</script>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="brand">Noah Qin</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation">
+          <a href="/projects">Projects</a><a href="/blog">Writing</a><a href="/archive">Archive</a><a href="/about">About</a>
+        </nav>
+        <div class="header-tools">
+          <button id="search-button" class="icon-button" aria-label="Search">⌕</button>
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle theme"><span class="theme-icon" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+    <main>{{ content |> safe }}</main>
+    <footer class="site-footer"><span>© {{ new Date().getFullYear() }} {{ site.name }}.</span><span><a href="/rss.xml">RSS</a><a href="{{ site.github }}">GitHub</a></span></footer>
+    {{ include "partials/command-menu.vto" }}
+    <script type="module" src="/assets/site.js"></script>
+  </body>
+</html>

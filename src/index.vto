@@ -1,0 +1,8 @@
+---
+title: Home | Noah Qin
+url: /
+---
+<section class="hero"><div><h1>Hi, I'm <span>Noah Qin</span>.</h1><p>Class of 2027 Applicant. I build <strong>systems</strong>, <strong>products</strong>, and <strong>communities</strong>. From open-source developer tools and iOS apps to Cobay, I turn technical ideas into things people can use together.</p><div class="button-row"><a class="primary-button" href="/projects">View Projects</a><a class="secondary-button" href="/blog">Read Essays</a></div></div><div class="hero-art"><div></div><img src="/favicon.png" alt="Noah Qin Avatar"></div></section>
+<section class="tech"><p>Technologies I work with</p><div><span>Swift</span><span>Python</span><span>Java</span><span>Rust</span><span>SQL</span><span>PyTorch</span><span>Astro</span><span>Spring Boot</span></div></section>
+<section class="section"><div class="section-title"><h2>Featured Projects</h2><a href="/projects">View All →</a></div><div class="card-grid">{{ for project of search.pages('type=project', 'publishDate=desc', 2) }}{{ include "partials/project-card.vto" { project } }}{{ /for }}</div></section>
+<section class="section"><div class="section-title"><h2>Latest Essays</h2><a href="/blog">Read Blog →</a></div><div class="post-list">{{ for post of search.pages('type=blog', 'publishDate=desc', 3) }}{{ include "partials/post-row.vto" { post } }}{{ /for }}</div></section>

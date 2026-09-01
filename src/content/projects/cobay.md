@@ -2,8 +2,9 @@
 title: "Cobay"
 description: "A builder community connecting AI founders, engineers, and product teams through local meetups and a shared digital platform."
 publishDate: "2026-05-20"
+url: "/projects/cobay/"
 tags: ["Community", "AI", "Entrepreneurship", "Web Development"]
-type: "other"
+projectType: "other"
 stats: "Co-Founder"
 link: "https://cobay.tech/"
 ---
@@ -18,18 +19,18 @@ I co-founded Cobay on **May 20, 2026**. The project grew from a simple observati
 
 My work spans both the physical and digital sides of the community:
 
-*   **Founder meetups** — organizing offline events that connect founders, engineers, and product builders.
-*   **Website development** — building and maintaining Cobay's public presence.
-*   **Product engineering** — developing the platform that helps events, people, and community activity remain connected beyond a single meetup.
+- **Founder meetups** — organizing offline events that connect founders, engineers, and product builders.
+- **Website development** — building and maintaining Cobay's public presence.
+- **Product engineering** — developing the platform that helps events, people, and community activity remain connected beyond a single meetup.
 
 ## What We Are Building
 
 Cobay is designed around three layers:
 
-1.  **Real rooms** where builders can share unfinished work and meet potential collaborators.
-2.  **Local communities** that connect founders, technical talent, and product teams.
-3.  **A lasting archive and product layer** that carries useful connections beyond each event.
+1. **Real rooms** where builders can share unfinished work and meet potential collaborators.
+2. **Local communities** that connect founders, technical talent, and product teams.
+3. **A lasting archive and product layer** that carries useful connections beyond each event.
 
 The central product lesson is that software cannot create trust by itself. It can, however, reduce the friction between meeting someone and building something together.
 
-*Read the story behind the project in [You Can't Build a Community with Code Alone](/blog/why-i-co-founded-cobay).*
+_Read the story behind the project in [You Can't Build a Community with Code Alone](/blog/why-i-co-founded-cobay)._

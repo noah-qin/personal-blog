@@ -2,6 +2,7 @@
 title: "You Can't Build a Community with Code Alone"
 description: "Why I co-founded Cobay, and what organizing founder meetups has taught me about building for people instead of just users."
 publishDate: "2026-07-06T12:00:00"
+url: "/blog/why-i-co-founded-cobay/"
 tags: ["Entrepreneurship", "Community", "AI", "Growth"]
 ---
 

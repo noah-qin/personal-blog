@@ -2,6 +2,7 @@
 title: "Echoes of '25 and the Dawn of '26"
 description: "Reflections on 2025 and setting the stage for a more impactful 2026."
 publishDate: "2026-01-01T00:50:00"
+url: "/blog/2026-new-year/"
 tags: ["Reflection", "Personal"]
 ---
 

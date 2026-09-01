@@ -2,6 +2,7 @@
 title: "Building a Multi-Language Version Manager from Scratch"
 description: "Why I got tired of nvm, rustup, pyenv all fighting over my home directory — and decided to build Vex."
 publishDate: "2026-03-15T09:00:00"
+url: "/blog/building-vex/"
 tags: ["Rust", "DevTools", "Open Source"]
 ---
 
