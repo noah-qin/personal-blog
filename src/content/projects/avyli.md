@@ -1,0 +1,44 @@
+---
+title: "Avyli"
+description: "A voice-first personal assistant for iOS. Say what you need to do, and it figures out which tasks you are likely to put off, then breaks them into a first step you can start right away."
+publishDate: "2026-07-30"
+url: "/projects/avyli/"
+tags: ["iOS", "SwiftUI", "AI", "Productivity"]
+projectType: "app"
+stats: "In Development"
+---
+
+# Avyli
+
+> Say it once. Let it handle the rest.
+
+**Avyli** is a voice-first personal assistant for iOS. You describe your day the way you would to a friend ("English class at 3 tomorrow, go for a run in the evening, and pick up a parcel") and Avyli turns it into structured items on your calendar, reminders, and notifications.
+
+## The Idea: Friction
+
+Most to-do apps treat every task the same way: a title, a time, and a reminder. But having time for something doesn't mean it will happen.
+
+"Meet my coach in the evening" happens on its own, because someone else is waiting. "Go for a run in the evening" depends entirely on me getting started, so it usually slides to tomorrow. The first only needs a reminder. The second needs to be broken down.
+
+Avyli is built around that difference, which I call **friction**. Everything it captures falls into one of three kinds:
+
+| Kind     | Meaning                                                 | Examples                  |
+| -------- | ------------------------------------------------------- | ------------------------- |
+| `event`  | Happens at a specific time and place, often with others | A class, a doctor's visit |
+| `errand` | A concrete chore that takes minutes, not hours          | Buying lunch, a parcel    |
+| `task`   | Needs sustained effort and produces a result            | Problem sets, a report    |
+
+Only high-friction items go through decomposition. Avyli doesn't just remind you to "write the report"; it gives you a first step small enough to start right now.
+
+## How It Works
+
+- **Voice capture** with on-device speech recognition
+- **Two models for two jobs**: parsing needs consistent structured output, conversation needs to understand context, so they are handled separately
+- **System integration** through EventKit, widgets, Control Center, Siri, Shortcuts, and Spotlight
+- **Sync** with SwiftData and CloudKit
+- **A small backend** on Cloudflare Workers, protected end to end with App Attest
+- **Evaluations** for model behaviour, covering capture, decomposition, chat, and memory
+
+## Status
+
+Avyli is still in development and the source is private. I'll share more when it is ready.

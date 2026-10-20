@@ -1,0 +1,54 @@
+---
+title: "Kaggle Competitions"
+description: "A team silver medal in BirdCLEF+ 2026 (151st of 4,084) for wildlife sound recognition, and a solo bronze medal in the NVIDIA Nemotron Model Reasoning Challenge (402nd of 4,182)."
+publishDate: "2026-06-16"
+url: "/projects/kaggle-competitions/"
+tags: ["AI", "Competition", "Data"]
+projectType: "other"
+stats: "Silver · Bronze"
+---
+
+# Kaggle Competitions
+
+In 2026 I entered two Kaggle competitions in very different corners of machine learning: one about listening to a wetland, and one about teaching a language model to reason.
+
+## 🥈 BirdCLEF+ 2026 — Silver Medal
+
+**Team · 151st of 4,084 teams · June 4, 2026**
+
+**The task:** identify birds, amphibians, mammals, and insects from continuous field recordings in the Pantanal wetlands of South America, in support of passive acoustic biodiversity monitoring. For every 5-second window, the model predicts the probability of each of **234 species**.
+
+Two constraints shaped everything:
+
+- **Macro-averaged ROC-AUC that skips empty classes.** Rare species count as much as common ones, so you can't score well by betting on frequent calls.
+- **CPU-only inference within 90 minutes.** Training could happen on a GPU, but the final submission had to run offline on a CPU, so models were exported to ONNX.
+
+The training data also came from two different worlds: clean, single-species recordings uploaded by enthusiasts, and noisy one-minute soundscapes recorded by devices in the field. Bridging that gap was one of the main challenges.
+
+**The approach:** a distilled Sound Event Detection (SED) model.
+
+- An **EfficientNet-B0** backbone learns to match the representations of Google's **Perch** bioacoustics model through distillation.
+- A separate **SED head** classifies on top of a stop-gradient copy of those features, so the classification loss doesn't fight the distillation loss.
+- **Attention pooling** instead of global average pooling, so a 0.3-second call isn't drowned out by the rest of a 5-second window.
+- **Clip and frame fusion** at inference: `0.5 × clip + 0.5 × frame_max`.
+- **Focal-soundscape MixUp**, mixing clean recordings into real field noise to close the domain gap.
+
+Our team's solution built on public work from the community, a baseline notebook and a distilled SED training pipeline. My part focused on additional SED training and tuning the ensemble weights.
+
+## 🥉 NVIDIA Nemotron Model Reasoning Challenge — Bronze Medal
+
+**Solo · 402nd of 4,182 teams · June 16, 2026**
+
+**The task:** improve **Nemotron-3-Nano-30B** on structured reasoning puzzles. Each puzzle shows a few input–output examples, and the model has to infer the hidden rule and answer a new case in `\boxed{}` format.
+
+Instead of a predictions file, the submission was a **LoRA adapter** (rank ≤ 32) that the organisers loaded into their own vLLM evaluation. The training set covered six puzzle families: bit manipulation, gravity, unit conversion, ciphers, Roman numerals, and symbol transformations.
+
+**The approach:**
+
+1. Set up a working pipeline first: generate supervised fine-tuning data from the training set, train a short LoRA run, and confirm the adapter loads and scores.
+2. Move to **chain-of-thought supervised fine-tuning** with Unsloth, building on public recipes from the community, with LoRA rank 32 over a full epoch.
+3. Adapt it to Kaggle's hardware limits: an RTX PRO 6000 GPU, a 6–8 hour run, and limited disk space, which meant disabling checkpoint saves so optimizer states wouldn't fill the working directory.
+
+## What I Took Away
+
+The two competitions had almost nothing in common technically, but they taught the same lesson: **the constraints are the problem.** A 90-minute CPU limit decided the architecture for BirdCLEF. A rank-32 adapter and a fixed GPU budget decided the training strategy for Nemotron. Reading the rules carefully mattered as much as choosing the model.
