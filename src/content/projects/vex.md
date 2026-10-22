@@ -11,6 +11,8 @@ github: "https://github.com/noah-qin/vex"
 
 # Vex
 
+> **Archived (Oct 2026).** Vex is no longer maintained. For an actively maintained alternative, use [mise](https://github.com/jdx/mise).
+
 **Vex** is a multi-language version manager for macOS, built in Rust. It manages Node.js, Go, Java, Rust, and Python from a single tool, using symlinks instead of shims for instant, zero-overhead version switching.
 
 ## Why I Built This
