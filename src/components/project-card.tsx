@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Project } from "@/lib/placeholder";
+import type { Project } from "@/lib/content";
 import { tagSlug } from "@/lib/tags";
 
 const badges = {
@@ -8,9 +8,32 @@ const badges = {
   other: { label: "Project", className: "bg-emerald-50 text-emerald-600" },
 };
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectBadges({
+  project,
+  className = "justify-between",
+}: {
+  project: Project;
+  className?: string;
+}) {
   const badge = badges[project.projectType];
 
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      <span
+        className={`rounded-full border border-border px-3 py-1 text-xs ${badge.className}`}
+      >
+        {badge.label}
+      </span>
+      {project.stats && (
+        <span className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">
+          {project.stats}
+        </span>
+      )}
+    </div>
+  );
+}
+
+export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-border bg-card p-6 backdrop-blur-lg transition duration-250 hover:-translate-y-1 hover:border-primary hover:shadow-xl">
       <Link
@@ -18,18 +41,10 @@ export function ProjectCard({ project }: { project: Project }) {
         aria-label={project.title}
         className="absolute inset-0"
       />
-      <div className="pointer-events-none relative flex items-center justify-between">
-        <span
-          className={`rounded-full border border-border px-3 py-1 text-xs ${badge.className}`}
-        >
-          {badge.label}
-        </span>
-        {project.stats && (
-          <span className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">
-            {project.stats}
-          </span>
-        )}
-      </div>
+      <ProjectBadges
+        project={project}
+        className="pointer-events-none relative justify-between"
+      />
       <h2 className="pointer-events-none relative mt-1 text-xl font-bold">
         {project.title}
       </h2>

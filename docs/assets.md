@@ -34,11 +34,12 @@ src/content/<collection>/<slug>/
 Images are statically imported and rendered with `next/image`. Static imports give Next.js the intrinsic width and height at build time, so they are never written by hand.
 
 ```mdx
-import Image from "next/image";
 import stage from "./stage.jpg";
 
 <Image src={stage} alt="The main stage" />
 ```
+
+`Image` is provided to every entry by `src/mdx-components.tsx`, which wraps `next/image` with the body `sizes` and styles, so entries only import the image files.
 
 | Context | Rendering |
 | :-- | :-- |

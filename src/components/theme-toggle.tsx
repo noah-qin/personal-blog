@@ -14,6 +14,12 @@ export function ThemeToggle() {
     const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     localStorage.setItem("theme", next);
     root.setAttribute("data-theme", next);
+    document
+      .querySelector<HTMLIFrameElement>("iframe.giscus-frame")
+      ?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: next } } },
+        "https://giscus.app",
+      );
   }
 
   return (

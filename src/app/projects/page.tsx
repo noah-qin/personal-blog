@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/lib/placeholder";
+import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Projects",
 };
 
-export default function Page() {
+export default async function Page() {
+  const projects = await getProjects();
   return (
     <>
       <header className="mb-12 max-w-2xl">

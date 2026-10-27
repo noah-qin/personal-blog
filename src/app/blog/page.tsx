@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PostRow } from "@/components/post-row";
-import { posts } from "@/lib/placeholder";
+import { getPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Writing",
 };
 
-export default function Page() {
+export default async function Page() {
+  const posts = await getPosts();
   return (
     <>
       <header className="mb-12 max-w-2xl">

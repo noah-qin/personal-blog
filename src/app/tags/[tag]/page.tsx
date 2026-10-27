@@ -5,24 +5,24 @@ import { PostRow } from "@/components/post-row";
 import { ProjectCard } from "@/components/project-card";
 import { getTagged, getTags } from "@/lib/tags";
 
-export function generateStaticParams() {
-  return [...getTags().keys()].map((tag) => ({ tag }));
+export async function generateStaticParams() {
+  return [...(await getTags()).keys()].map((tag) => ({ tag }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/tags/[tag]">): Promise<Metadata> {
   const { tag } = await params;
-  const name = getTags().get(tag);
+  const name = (await getTags()).get(tag);
   return name ? { title: `#${name}` } : {};
 }
 
 export default async function Page({ params }: PageProps<"/tags/[tag]">) {
   const { tag } = await params;
-  const name = getTags().get(tag);
+  const name = (await getTags()).get(tag);
   if (!name) notFound();
 
-  const { projects, posts } = getTagged(tag);
+  const { projects, posts } = await getTagged(tag);
 
   return (
     <>

@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next";
-import { posts, projects } from "@/lib/placeholder";
+import { getPosts, getProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 import { getTags } from "@/lib/tags";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [posts, projects, tags] = await Promise.all([
+    getPosts(),
+    getProjects(),
+    getTags(),
+  ]);
   const pages = ["", "/about", "/projects", "/blog", "/archive"].map(
     (path) => ({ url: `${site.url}${path}` }),
   );
@@ -16,8 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...projects.map((project) => ({
       url: `${site.url}/projects/${project.slug}`,
+      lastModified: project.publishDate,
     })),
-    ...[...getTags().keys()].map((tag) => ({
+    ...[...tags.keys()].map((tag) => ({
       url: `${site.url}/tags/${tag}`,
     })),
   ];

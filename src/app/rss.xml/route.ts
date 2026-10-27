@@ -1,4 +1,4 @@
-import { posts } from "@/lib/placeholder";
+import { getPosts } from "@/lib/content";
 import { site } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -9,7 +9,8 @@ function escapeXml(value: string) {
     .replaceAll('"', "&quot;");
 }
 
-export function GET() {
+export async function GET() {
+  const posts = await getPosts();
   const items = posts
     .map((post) => {
       const url = `${site.url}/blog/${post.slug}`;

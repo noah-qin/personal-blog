@@ -3,7 +3,7 @@ import Link from "next/link";
 import avatar from "@/assets/avatar.png";
 import { PostRow } from "@/components/post-row";
 import { ProjectCard } from "@/components/project-card";
-import { posts, projects } from "@/lib/placeholder";
+import { getPosts, getProjects } from "@/lib/content";
 
 const technologies = [
   "Swift",
@@ -16,7 +16,8 @@ const technologies = [
   "Spring Boot",
 ];
 
-export default function Page() {
+export default async function Page() {
+  const [posts, projects] = await Promise.all([getPosts(), getProjects()]);
   return (
     <>
       <section className="grid items-center gap-12 pt-6 pb-15 md:grid-cols-2 md:pt-15 md:pb-20">

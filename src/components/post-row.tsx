@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { Post } from "@/lib/placeholder";
+import type { Post } from "@/lib/content";
 
 export function PostRow({ post }: { post: Post }) {
   return (
@@ -19,6 +20,15 @@ export function PostRow({ post }: { post: Post }) {
           Read more →
         </span>
       </div>
+      {post.cover && (
+        <Image
+          src={post.cover}
+          alt={post.title}
+          width={128}
+          height={128}
+          className="hidden size-32 flex-none rounded-lg border border-border object-cover sm:block"
+        />
+      )}
     </Link>
   );
 }

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts } from "@/lib/placeholder";
+import { getPosts } from "@/lib/content";
+import { formatShortDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Archive",
 };
 
-const dateFormat = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  timeZone: "UTC",
-});
-
-export default function Page() {
+export default async function Page() {
+  const posts = await getPosts();
   const years = Map.groupBy(posts, (post) =>
     new Date(post.publishDate).getUTCFullYear(),
   );
@@ -50,7 +46,7 @@ export default function Page() {
                       dateTime={post.publishDate}
                       className="shrink-0 font-mono text-sm text-muted"
                     >
-                      {dateFormat.format(new Date(post.publishDate))}
+                      {formatShortDate(post.publishDate)}
                     </time>
                   </Link>
                 </li>
