@@ -11,6 +11,7 @@
   --border: #d1d5db;
   --card: rgb(255 255 255 / 0.72);
   --soft: #f3f4f6;
+  --link: #4f46e5;
   color-scheme: light;
 }
 
@@ -23,6 +24,7 @@
   --border: #242629;
   --card: rgb(22 22 26 / 0.78);
   --soft: #242629;
+  --link: #818cf8;
   color-scheme: dark;
 }
 
@@ -35,6 +37,7 @@
   --color-border: var(--border);
   --color-card: var(--card);
   --color-soft: var(--soft);
+  --color-link: var(--link);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }

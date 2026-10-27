@@ -15,7 +15,7 @@ export function PostRow({ post }: { post: Post }) {
             <span key={tag}>#{tag}</span>
           ))}
         </div>
-        <span className="mt-2.5 block -translate-x-2 text-sm text-indigo-600 opacity-0 transition duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+        <span className="mt-2.5 block -translate-x-2 text-sm text-link opacity-0 transition duration-200 group-hover:translate-x-0 group-hover:opacity-100">
           Read more →
         </span>
       </div>

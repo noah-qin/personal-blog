@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const stack = [
   { label: "Languages", items: "Swift, Python, Java, Rust, SQL" },
-  { label: "Frameworks", items: "SwiftUI, PyTorch, Deno, Lume, Spring Boot" },
+  { label: "Frameworks", items: "SwiftUI, PyTorch, Next.js, Spring Boot" },
   { label: "Tools", items: "Git, Docker, VS Code, Xcode, Cursor" },
 ];
 
@@ -94,7 +94,7 @@ export default function Page() {
         </a>
         <p className="mt-4 text-muted">
           Contact me via{" "}
-          <a href={`mailto:${site.email}`} className="text-indigo-600">
+          <a href={`mailto:${site.email}`} className="text-link">
             {site.email}
           </a>
         </p>

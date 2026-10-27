@@ -12,7 +12,7 @@ const technologies = [
   "Rust",
   "SQL",
   "PyTorch",
-  "Astro",
+  "Next.js",
   "Spring Boot",
 ];
 
@@ -76,7 +76,7 @@ export default function Page() {
       <section className="mb-20">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold">Featured Projects</h2>
-          <Link href="/projects" className="text-sm text-indigo-600">
+          <Link href="/projects" className="text-sm text-link">
             View All →
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function Page() {
       <section className="mb-20">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold">Latest Essays</h2>
-          <Link href="/blog" className="text-sm text-indigo-600">
+          <Link href="/blog" className="text-sm text-link">
             Read Blog →
           </Link>
         </div>

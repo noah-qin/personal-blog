@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <header className="mb-12 max-w-2xl">
         <p className="leading-relaxed text-muted">
-          <Link href="/" className="text-sm text-indigo-600">
+          <Link href="/" className="text-sm text-link">
             Home
           </Link>{" "}
           / Archive
