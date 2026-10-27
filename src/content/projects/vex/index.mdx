@@ -1,0 +1,103 @@
+export const metadata = {
+  title: "Vex",
+  description: "A fast, multi-language version manager for macOS. Symlink-based switching, zero shim overhead, everything under ~/.vex.",
+  publishDate: "2026-02-27",
+  tags: ["Rust", "DevTools", "Open Source", "CLI"],
+  projectType: "other",
+  stats: "19 Releases",
+  github: "https://github.com/noah-qin/vex",
+};
+
+**Vex** is a multi-language version manager for macOS, built in Rust. It manages Node.js, Go, Java, Rust, and Python from a single tool, using symlinks instead of shims for instant, zero-overhead version switching.
+
+## Why I Built This
+
+Every language has its own version manager — nvm, rustup, sdkman, pyenv, goenv. They each scatter files across your home directory, use different switching mechanisms, and don't know about each other. I wanted one tool that keeps everything clean under a single `~/.vex` directory.
+
+## Technical Highlights
+
+- **Symlink-based switching** — no shim overhead, version changes are instant
+- **Atomic operations** — TOCTOU protection ensures symlink swaps can't leave broken state
+- **Parallel downloads** — up to 3 concurrent downloads with atomic writes
+- **Checksum verification** — SHA256 verification for Node.js, upstream metadata for others
+- **Concurrent install protection** — file-based locking prevents parallel install corruption
+- **Security hardening** — ownership validation, path traversal protection
+
+## Features
+
+- 5 languages: Node.js, Go, Java (Eclipse Temurin), Rust, Python
+- `.tool-versions` support with auto-switch on `cd`
+- Fuzzy version matching (`node@20` → latest 20.x)
+- Lockfile support for reproducible environments
+- Team config sync from HTTPS URLs or Git repos
+- Project templates (`vex init --template rust-cli`)
+- TUI dashboard (`vex tui`)
+- Python venv integration
+- Self-update (`vex self-update`)
+- Official GitHub Action (`uses: noah-qin/vex@v1`)
+- Homebrew tap (`brew install noah-qin/homebrew-vex/vex`)
+
+## Development Timeline
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Version</th>
+      <th>Milestone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Feb 27</td>
+      <td>v0.1.0</td>
+      <td>First release — Node.js support</td>
+    </tr>
+    <tr>
+      <td>Feb 28</td>
+      <td>v0.1.1–0.1.4</td>
+      <td>Rapid bug fixes (4 patches in 24 hours)</td>
+    </tr>
+    <tr>
+      <td>Mar 8</td>
+      <td>v0.2.0</td>
+      <td>Multi-language support (Go, Java, Rust)</td>
+    </tr>
+    <tr>
+      <td>Mar 9</td>
+      <td>v1.0.0</td>
+      <td>Stable release with security hardening</td>
+    </tr>
+    <tr>
+      <td>Mar 11–16</td>
+      <td>v1.1–v1.4</td>
+      <td>Python, lockfiles, team sync, templates</td>
+    </tr>
+    <tr>
+      <td>Mar 30</td>
+      <td>v1.5.0</td>
+      <td>Feature expansion</td>
+    </tr>
+    <tr>
+      <td>Apr 4–8</td>
+      <td>v1.6.0–v1.6.1</td>
+      <td>npm global management, Rust historical versions</td>
+    </tr>
+  </tbody>
+</table>
+
+_Read the full story in my [blog post](/blog/building-vex)._
+
+## Architecture
+
+```
+~/.vex/
+├── bin/            # Symlinks (on PATH)
+├── toolchains/     # Installed versions
+├── current/        # Active version symlinks
+├── cache/          # Download + version cache
+├── locks/          # Concurrent install protection
+└── config.toml     # User configuration
+```
+
+Built with Rust. Single binary, no runtime dependencies.
