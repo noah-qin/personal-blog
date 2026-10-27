@@ -1,0 +1,138 @@
+const events = [
+  {
+    date: "2026 (Sep 19)",
+    title: "Grok Bot Meetup Beijing",
+    text: "Saw AI agents split work into roles like a small think tank, and reflected on where human judgment still fits.",
+  },
+  {
+    date: "2026 (Sep–Oct)",
+    title: "Corta — macOS Terminal",
+    text: "Built a native macOS terminal in Swift with Metal 4 rendering, native CJK input, and SSH/SFTP. 15 releases in 7 weeks.",
+  },
+  {
+    date: "2026 (Jul–Aug)",
+    title: "Avyli",
+    text: "Started building a voice-first personal assistant for iOS that breaks high-friction tasks into a first step you can start right away.",
+  },
+  {
+    date: "2026 (Jul 4)",
+    title: "Cafe Cursor Beijing",
+    text: "Joined local developers for a day of building and exchanged perspectives on AI, current projects, and the changing development workflow.",
+  },
+  {
+    date: "2026 (Jun 23)",
+    title: "AWS Summit China",
+    text: "Attended the Shanghai summit and explored production AI infrastructure, including Snowflake's multimodal customer-service data workflows.",
+  },
+  {
+    date: "2026 (Jun 16)",
+    title: "Kaggle Bronze — NVIDIA Nemotron",
+    text: "Placed 402nd of 4,182 teams solo in the NVIDIA Nemotron Model Reasoning Challenge by fine-tuning a LoRA adapter for structured reasoning.",
+  },
+  {
+    date: "2026 (Jun 4)",
+    title: "Kaggle Silver — BirdCLEF+ 2026",
+    text: "Placed 151st of 4,084 teams with my team, recognizing wildlife sounds in Pantanal field recordings under a CPU-only inference limit.",
+  },
+  {
+    date: "2026 (May 20)",
+    title: "Co-Founded Cobay",
+    text: "Started an AI builder community focused on local founder meetups. Leading offline event organization and the website and product engineering.",
+  },
+  {
+    date: "2026 (May)",
+    title: "EUSIPCO 2026 Result",
+    text: "The data augmentation paper was not accepted. The review outcome became a checkpoint for improving the methodology and experimental validation.",
+  },
+  {
+    date: "2026 (Mar 28)",
+    title: "SSC 2026 Result",
+    text: "CurveStudio was not selected for the Swift Student Challenge. Reflected on problem selection vs. execution — wrote about the experience.",
+  },
+  {
+    date: "2026 (Mar)",
+    title: "Freelance Development",
+    text: "Started taking freelance development commissions. First experience having clients pay for my code — learned about communication and delivery.",
+  },
+  {
+    date: "2026 (Mar)",
+    title: "MoleUI",
+    text: "Built a native macOS GUI for tw93/Mole (a system cleaning CLI tool) using SwiftUI. Contributing to open source.",
+  },
+  {
+    date: "2026 (Feb–Apr)",
+    title: "Vex — Version Manager",
+    text: "Built a multi-language version manager for macOS in Rust. 19 releases in 6 weeks, supporting Node.js, Go, Java, Rust, and Python.",
+  },
+  {
+    date: "2026 (Feb)",
+    title: "EUSIPCO Submission",
+    text: "Submitted paper 'Rethinking Data Augmentation for Small-Sample Learning' to EUSIPCO 2026. (Paper ID: 1089)",
+  },
+  {
+    date: "2026 (Jan)",
+    title: "USACO Platinum",
+    text: "Advanced from Bronze to Platinum division in a single contest window during the January competition.",
+  },
+  {
+    date: "2025 (Nov)",
+    title: "NightGuard Launch",
+    text: "Released independent iOS app to the App Store. Achieved 50+ downloads in the first month.",
+  },
+  {
+    date: "2025",
+    title: "Vivo Developer Conf",
+    text: "Attended the Vivo Developer Conference to explore industry trends and network with mobile engineers.",
+  },
+  {
+    date: "2025",
+    title: "Rethinking Augmentation",
+    text: "Initiated research on Rethinking Data Augmentation, laying the foundation for the EUSIPCO submission.",
+  },
+  {
+    date: "2024",
+    title: "Enterprise Data Solution",
+    text: "Developed a Python crawler and data analysis system to automate business intelligence for my family's business.",
+  },
+  {
+    date: "2023",
+    title: "Jinpeng Sci-Tech Forum",
+    text: "Competed in the Beijing Jinpeng Science & Technology Forum with an advanced Arduino engineering project.",
+  },
+  {
+    date: "2021",
+    title: "Robotics Competition",
+    text: "Participated in the Beijing Middle School Arduino Robot Competition. Early exploration of hardware-software integration.",
+  },
+  {
+    date: "2018",
+    title: "Hello, World",
+    text: "Wrote my very first line of Python code. The journey into computer science began.",
+  },
+];
+
+export function Timeline() {
+  return (
+    <div className="relative before:absolute before:inset-y-0 before:left-[19px] before:w-0.5 before:bg-border">
+      {events.map((event) => (
+        <article
+          key={`${event.date}-${event.title}`}
+          className="relative my-6 flex gap-5"
+        >
+          <span className="z-10 grid size-10 flex-none place-items-center rounded-full border border-border bg-background">
+            ○
+          </span>
+          <div className="flex-1 rounded-xl border border-border bg-card p-4">
+            <header className="flex flex-col justify-between gap-2.5 md:flex-row">
+              <strong>{event.title}</strong>
+              <time className="font-mono text-xs text-primary">
+                {event.date}
+              </time>
+            </header>
+            <p className="mt-2 text-sm/normal text-muted">{event.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
