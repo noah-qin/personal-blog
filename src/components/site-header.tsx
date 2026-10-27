@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { SearchButton } from "@/components/command-menu";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
   { href: "/projects", label: "Projects" },
@@ -29,25 +31,8 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3 border-l border-border pl-3.5 md:pl-5">
-          <button
-            type="button"
-            aria-label="Search"
-            className="size-7 cursor-pointer text-2xl text-muted"
-          >
-            ⌕
-          </button>
-          <button
-            type="button"
-            aria-label="Toggle theme"
-            className="size-7 cursor-pointer text-2xl text-muted"
-          >
-            <span aria-hidden="true" className="dark:hidden">
-              ☾
-            </span>
-            <span aria-hidden="true" className="hidden dark:inline">
-              ☀
-            </span>
-          </button>
+          <SearchButton />
+          <ThemeToggle />
         </div>
       </div>
     </header>
