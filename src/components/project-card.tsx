@@ -38,6 +38,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-border bg-card p-6 backdrop-blur-lg transition duration-250 hover:-translate-y-1 hover:border-primary hover:shadow-xl">
       <Link
         href={`/projects/${project.slug}`}
+        prefetch={true}
         aria-label={project.title}
         className="absolute inset-0"
       />
@@ -56,6 +57,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <Link
             key={tag}
             href={`/tags/${tagSlug(tag)}`}
+            prefetch={true}
             className="z-10 font-mono text-xs text-muted hover:text-primary"
           >
             #{tag}

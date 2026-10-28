@@ -59,6 +59,7 @@ async function ProjectDetails({
             <Link
               key={tag}
               href={`/tags/${tagSlug(tag)}`}
+              prefetch={true}
               className="font-mono text-xs text-muted hover:text-primary"
             >
               #{tag}

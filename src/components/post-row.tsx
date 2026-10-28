@@ -6,6 +6,7 @@ export function PostRow({ post }: { post: Post }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
+      prefetch={true}
       className="group -mx-4 flex items-center justify-between gap-6 rounded-xl p-4 hover:bg-soft/65"
     >
       <div>

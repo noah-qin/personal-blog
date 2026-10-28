@@ -41,6 +41,7 @@ export default async function Page() {
                 <li key={post.slug}>
                   <Link
                     href={`/blog/${post.slug}`}
+                    prefetch={true}
                     className="flex justify-between gap-4 py-2 hover:text-primary"
                   >
                     <strong>{post.title}</strong>
