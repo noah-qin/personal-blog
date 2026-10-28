@@ -15,9 +15,9 @@ export function Comments() {
     script.async = true;
     const attributes = {
       repo: "noah-qin/personal-blog",
-      "repo-id": "R_kgDOQusUUA",
+      "repo-id": "R_kgDOVaRTqA",
       category: "Announcements",
-      "category-id": "DIC_kwDOQusUUM4C0O8G",
+      "category-id": "DIC_kwDOVaRTqM4DJzw2",
       mapping: "pathname",
       strict: "0",
       "reactions-enabled": "1",
