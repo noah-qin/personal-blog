@@ -12,14 +12,21 @@ export function ThemeToggle() {
   function toggle() {
     const root = document.documentElement;
     const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", next);
-    root.setAttribute("data-theme", next);
-    document
-      .querySelector<HTMLIFrameElement>("iframe.giscus-frame")
-      ?.contentWindow?.postMessage(
-        { giscus: { setConfig: { theme: next } } },
-        "https://giscus.app",
-      );
+
+    function apply() {
+      localStorage.setItem("theme", next);
+      root.setAttribute("data-theme", next);
+      document
+        .querySelector<HTMLIFrameElement>("iframe.giscus-frame")
+        ?.contentWindow?.postMessage(
+          { giscus: { setConfig: { theme: next } } },
+          "https://giscus.app",
+        );
+    }
+
+    // Cross-fade the whole page, iframes included, instead of letting each element repaint on its own.
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) apply();
+    else document.startViewTransition(apply);
   }
 
   return (

@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static theme script from the Next.js flash-prevention guide */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="bg-background font-sans text-foreground transition-colors duration-300">
+      <body className="bg-background font-sans text-foreground">
         <CommandMenuProvider>
           <SiteHeader />
           <main className="mx-auto min-h-[calc(100vh-180px)] max-w-4xl px-6 py-12">
