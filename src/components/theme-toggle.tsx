@@ -1,14 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
-
 export function ThemeToggle() {
-  // Re-apply after React clears it on the dev remount. This is a no-op in production.
-  useLayoutEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme) document.documentElement.setAttribute("data-theme", theme);
-  }, []);
-
   function toggle() {
     const root = document.documentElement;
     const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
