@@ -89,6 +89,5 @@ Every page sets `openGraph` for its canonical URL, which replaces the root `open
 | `/robots.txt` | `src/app/robots.ts` |
 | `/sitemap.xml` | `src/app/sitemap.ts` |
 | `/rss.xml` | `src/app/rss.xml/route.ts` |
-| `/rss-styles.xsl` | `public/rss-styles.xsl` |
 
 `public/` holds only files that must be served at a fixed URL and are not covered by a Next.js convention.
