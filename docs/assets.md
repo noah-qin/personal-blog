@@ -79,7 +79,8 @@ Icons and the default social image use the Next.js metadata file conventions in 
 | `src/app/icon.png` | 512×512 | Modern browsers, search results |
 | `src/app/apple-icon.png` | 180×180, opaque background | iOS home screen |
 | `src/app/opengraph-image.png` | 1200×630, under 8 MB | Default social card |
-| `src/app/opengraph-image.alt.txt` | One line of text | Alt text for the default social card |
+
+Every page sets `openGraph` for its canonical URL, which replaces the root `opengraph-image` tags, so `src/app/shared-metadata.ts` restates the default card with its alt text. Pages build their canonical, Open Graph and Twitter metadata through `sharedMetadata`; a post passes its `cover.jpg` as the image.
 
 ## Crawler and feed files
 

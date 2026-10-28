@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { sharedMetadata } from "@/app/shared-metadata";
 import avatar from "@/assets/avatar.png";
 import { PostRow } from "@/components/post-row";
 import { ProjectCard } from "@/components/project-card";
 import { getPosts, getProjects } from "@/lib/content";
+import { site } from "@/lib/site";
 
 const technologies = [
   "Swift",
@@ -16,10 +19,28 @@ const technologies = [
   "Spring Boot",
 ];
 
+export const metadata: Metadata = sharedMetadata({ path: "/" });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  sameAs: [site.github],
+  jobTitle: "Student & Developer",
+};
+
 export default async function Page() {
   const [posts, projects] = await Promise.all([getPosts(), getProjects()]);
   return (
     <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD as recommended by the Next.js guide, with < escaped
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="grid items-center gap-12 pt-6 pb-15 md:grid-cols-2 md:pt-15 md:pb-20">
         <div className="order-2 md:order-1">
           <h1 className="mb-6 text-5xl/[1.05] font-bold tracking-[-0.04em] md:text-[56px]">

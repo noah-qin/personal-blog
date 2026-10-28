@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { ProjectBadges } from "@/components/project-card";
 import { getEntry, getProjects } from "@/lib/content";
 import { tagSlug } from "@/lib/tags";
@@ -30,7 +31,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = await getProject(slug);
   return project
-    ? { title: project.title, description: project.description }
+    ? {
+        title: project.title,
+        description: project.description,
+        ...sharedMetadata({ path: `/projects/${slug}` }),
+      }
     : {};
 }
 

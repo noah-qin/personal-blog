@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { ProjectCard } from "@/components/project-card";
 import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Projects",
+  ...sharedMetadata({ path: "/projects" }),
 };
 
 export default async function Page() {

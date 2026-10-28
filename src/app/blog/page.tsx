@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { PostRow } from "@/components/post-row";
 import { getPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Writing",
+  ...sharedMetadata({ path: "/blog" }),
 };
 
 export default async function Page() {

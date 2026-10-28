@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { Comments } from "@/components/comments";
 import { getEntry, getPosts } from "@/lib/content";
 import { formatLongDate } from "@/lib/format";
@@ -24,23 +25,14 @@ export async function generateMetadata({
   const post = await getPost(slug);
   if (!post) return {};
 
-  const images = post.cover ? [post.cover.src] : undefined;
   return {
     title: post.title,
     description: post.description,
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
+    ...sharedMetadata({
+      path: `/blog/${slug}`,
+      image: post.cover?.src,
       publishedTime: post.publishDate,
-      images,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images,
-    },
+    }),
   };
 }
 

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { site } from "@/lib/site";
 import { Timeline } from "./timeline";
 
 export const metadata: Metadata = {
   title: "About",
+  ...sharedMetadata({ path: "/about" }),
 };
 
 const stack = [

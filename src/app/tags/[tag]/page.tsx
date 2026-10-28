@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { PostRow } from "@/components/post-row";
 import { ProjectCard } from "@/components/project-card";
 import { getTagged, getTags } from "@/lib/tags";
@@ -15,7 +16,9 @@ export async function generateMetadata({
 }: PageProps<"/tags/[tag]">): Promise<Metadata> {
   const { tag } = await params;
   const name = (await getTags()).get(tag);
-  return name ? { title: `#${name}` } : {};
+  return name
+    ? { title: `#${name}`, ...sharedMetadata({ path: `/tags/${tag}` }) }
+    : {};
 }
 
 async function TagDetails({

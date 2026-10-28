@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { sharedMetadata } from "@/app/shared-metadata";
 import { getPosts } from "@/lib/content";
 import { formatShortDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Archive",
+  ...sharedMetadata({ path: "/archive" }),
 };
 
 export default async function Page() {
