@@ -26,17 +26,6 @@ const components: MDXComponents = {
     />
   ),
   pre: (props) => <CodeBlock {...props} />,
-  table: (props) => (
-    <div className="my-6 overflow-x-auto">
-      <table className="w-full border-collapse text-left text-sm" {...props} />
-    </div>
-  ),
-  th: (props) => (
-    <th className="border-b border-border px-3 py-2 font-bold" {...props} />
-  ),
-  td: (props) => (
-    <td className="border-b border-border px-3 py-2 align-top" {...props} />
-  ),
   Image: (props: ImageProps) => (
     <Image
       sizes="(min-width: 720px) 672px, 100vw"
