@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { cacheLife } from "next/cache";
 import type { StaticImageData } from "next/image";
 import type { ComponentType } from "react";
 
@@ -56,6 +57,9 @@ function byDate(a: Entry, b: Entry) {
 }
 
 export async function getPosts(): Promise<Post[]> {
+  "use cache";
+  // Content only changes with a new deployment.
+  cacheLife("max");
   const posts = await Promise.all(
     getSlugs("blog").map(async (slug) => ({
       slug,
@@ -70,6 +74,9 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getProjects(): Promise<Project[]> {
+  "use cache";
+  // Content only changes with a new deployment.
+  cacheLife("max");
   const projects = await Promise.all(
     getSlugs("projects").map(async (slug) => ({
       slug,

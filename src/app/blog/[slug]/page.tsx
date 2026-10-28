@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Comments } from "@/components/comments";
 import { getEntry, getPosts } from "@/lib/content";
 import { formatLongDate } from "@/lib/format";
@@ -43,7 +44,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: PageProps<"/blog/[slug]">) {
+async function PostDetails({
+  params,
+}: Pick<PageProps<"/blog/[slug]">, "params">) {
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) notFound();
@@ -91,5 +94,14 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
         <Comments />
       </div>
     </article>
+  );
+}
+
+// Read params inside Suspense so the route keeps a URL-independent App Shell.
+export default function Page({ params }: PageProps<"/blog/[slug]">) {
+  return (
+    <Suspense>
+      <PostDetails params={params} />
+    </Suspense>
   );
 }

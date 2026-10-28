@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ProjectBadges } from "@/components/project-card";
 import { getEntry, getProjects } from "@/lib/content";
 import { tagSlug } from "@/lib/tags";
@@ -33,7 +34,9 @@ export async function generateMetadata({
     : {};
 }
 
-export default async function Page({ params }: PageProps<"/projects/[slug]">) {
+async function ProjectDetails({
+  params,
+}: Pick<PageProps<"/projects/[slug]">, "params">) {
   const { slug } = await params;
   const project = await getProject(slug);
   if (!project) notFound();
@@ -80,5 +83,14 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
         <Content />
       </div>
     </article>
+  );
+}
+
+// Read params inside Suspense so the route keeps a URL-independent App Shell.
+export default function Page({ params }: PageProps<"/projects/[slug]">) {
+  return (
+    <Suspense>
+      <ProjectDetails params={params} />
+    </Suspense>
   );
 }

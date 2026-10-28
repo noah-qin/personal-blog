@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { PostRow } from "@/components/post-row";
 import { ProjectCard } from "@/components/project-card";
 import { getTagged, getTags } from "@/lib/tags";
@@ -17,7 +18,9 @@ export async function generateMetadata({
   return name ? { title: `#${name}` } : {};
 }
 
-export default async function Page({ params }: PageProps<"/tags/[tag]">) {
+async function TagDetails({
+  params,
+}: Pick<PageProps<"/tags/[tag]">, "params">) {
   const { tag } = await params;
   const name = (await getTags()).get(tag);
   if (!name) notFound();
@@ -59,5 +62,14 @@ export default async function Page({ params }: PageProps<"/tags/[tag]">) {
         </section>
       )}
     </>
+  );
+}
+
+// Read params inside Suspense so the route keeps a URL-independent App Shell.
+export default function Page({ params }: PageProps<"/tags/[tag]">) {
+  return (
+    <Suspense>
+      <TagDetails params={params} />
+    </Suspense>
   );
 }
