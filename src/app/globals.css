@@ -38,8 +38,8 @@
   --color-card: var(--card);
   --color-soft: var(--soft);
   --color-link: var(--link);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme {
