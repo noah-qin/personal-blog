@@ -6,6 +6,7 @@ import {
   type ReactNode,
   use,
   useEffect,
+  useEffectEvent,
   useRef,
   useState,
 } from "react";
@@ -67,17 +68,18 @@ export function CommandMenuProvider({ children }: { children: ReactNode }) {
     else window.location.href = command.href;
   }
 
-  useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault();
-        if (dialogRef.current?.open) dialogRef.current.close();
-        else open();
-      }
+  const onKeyDown = useEffectEvent((event: KeyboardEvent) => {
+    if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+      if (dialogRef.current?.open) dialogRef.current.close();
+      else open();
     }
+  });
+
+  useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  });
+  }, []);
 
   function onInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
