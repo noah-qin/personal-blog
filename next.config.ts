@@ -6,8 +6,6 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   reactCompiler: true,
   images: {
-    qualities: [75],
-    formats: ["image/webp"],
     localPatterns: [],
   },
   turbopack: {
